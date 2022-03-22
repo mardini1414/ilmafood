@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('delivery_id', 14)->unique();
-            $table->foreignId('user_id')->constrained('users');
+            $table->integer('user_id');
+            $table->string('user_name');
+            $table->string('user_phone_number');
+            $table->text('user_address');
             $table->integer('total_payment');
             $table->enum('status', ['diproses', 'dikirim', 'diterima'])->default('diproses');
             $table->timestamps();

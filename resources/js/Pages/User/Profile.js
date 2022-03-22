@@ -28,7 +28,7 @@ function Profile(props) {
 
   return (
     <MainLayout>
-      <div style={{ height: '100vh' }}>
+      <div className="pb-5" style={{ height: '100vh' }}>
         <div className="p-2">
           <div className="text-center pt-5 bg-orange rounded">
             <div

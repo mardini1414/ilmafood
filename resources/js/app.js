@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 // import "bootstrap";
 // import '@popperjs/core';
-import '@fortawesome/fontawesome-free/js/all.js';
+import '@fortawesome/fontawesome-free/css/all.css';
 import { InertiaProgress } from '@inertiajs/progress';
 
 InertiaProgress.init({

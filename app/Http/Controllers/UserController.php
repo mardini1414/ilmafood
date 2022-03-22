@@ -20,7 +20,7 @@ class UserController extends Controller
     {
 
         if ($request->file('avatar')) {
-            $request->validate(['avatar' => 'required|file|image|max:50']);
+            $request->validate(['avatar' => 'requiredfile|image|max:100']);
             if ($request->oldAvatar != null) {
                 Storage::delete($request->oldAvatar);
             }

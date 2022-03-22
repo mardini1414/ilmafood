@@ -39,11 +39,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('/dashboard/product', ProductController::class);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/profile', [UserController::class, 'show']);
     Route::put('/profile', [UserController::class, 'update']);
-
-    Route::get('/logout', LogoutController::class);
 
     Route::get('/cart', [CartController::class, 'show']);
     Route::post('/cart', [CartController::class, 'store']);
@@ -52,3 +50,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/order', [OrderController::class, 'index']);
     Route::post('/order',  [OrderController::class, 'store']);
 });
+
+Route::get('/logout', LogoutController::class)->middleware('auth');

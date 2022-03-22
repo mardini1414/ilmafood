@@ -26,7 +26,6 @@ class EditProfileRequest extends FormRequest
         return [
             'phone_number' => 'digits_between:11,13',
             'address' => 'min:20',
-            'avatar' => 'file|image|max:50'
         ];
     }
 }

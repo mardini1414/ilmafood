@@ -14,7 +14,7 @@ class OrderController extends Controller
     {
         $orders = Order::orderBy('id', 'desc')->where('user_id', Auth::user()->id)
             ->with('orderproduct:id,quantity,product_id,order_id', 'orderproduct.product:id,name,price,discounts,image')
-            ->select(['id', 'delivery_id', 'status', 'total_payment', 'created_at'])
+            ->select(['id', 'user_name', 'user_phone_number', 'user_address', 'delivery_id', 'status', 'total_payment', 'created_at'])
             ->get();
 
         return Inertia::render('User/Order', compact('orders'));
@@ -22,6 +22,11 @@ class OrderController extends Controller
 
     public function store()
     {
+
+        if (Auth::user()->phone_number == null || Auth::user()->address == null) {
+            return back()->with('message', 'No Hp dan alamat belum di isi');
+        }
+
         $carts = Cart::with('product')->where('user_id', Auth::user()->id)->get();
         $total = 0;
         $shippingCost = 5000;
@@ -34,6 +39,9 @@ class OrderController extends Controller
         Order::create([
             'delivery_id' => 'ILF-' . time(),
             'user_id' => Auth::user()->id,
+            'user_name' => Auth::user()->name,
+            'user_phone_number' => Auth::user()->phone_number,
+            'user_address' => Auth::user()->address,
             'total_payment' => $total + $shippingCost
         ]);
 

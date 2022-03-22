@@ -1,10 +1,11 @@
 import React from 'react';
 import MainLayout from '../MainLayout';
-import { useForm } from '@inertiajs/inertia-react';
+import { useForm, usePage, Link } from '@inertiajs/inertia-react';
 
 function Cart(props) {
   const { carts, total, shippingCost, totalPayment } = props;
   const { delete: destroy, post } = useForm();
+  const { flash } = usePage().props;
 
   return (
     <MainLayout>
@@ -45,6 +46,14 @@ function Cart(props) {
               </div>
             );
           })}
+          {flash.message && (
+            <div className="alert alert-warning mt-2">
+              {flash.message} cek{' '}
+              <Link href="/profile" className="text-warning">
+                disini
+              </Link>
+            </div>
+          )}
           {carts.length > 0 ? (
             <>
               <div>

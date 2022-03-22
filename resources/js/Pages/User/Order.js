@@ -5,7 +5,10 @@ function Order(props) {
   const { orders } = props;
 
   function showDetail(index) {
-    document.getElementById(`order-${index}`).classList.toggle('show-detail');
+    const orderItem = document.getElementById(`order-item${index}`);
+    const orderUser = document.getElementById(`order-user${index}`);
+    orderItem.classList.toggle('show-detail');
+    orderUser.classList.toggle('show-detail');
   }
 
   return (
@@ -14,7 +17,7 @@ function Order(props) {
         <div className="pb-5">
           {orders.map((order, index) => {
             return (
-              <div className="bg-white rounded px-2 pt-2 my-3" key={index}>
+              <div className="bg-white rounded px-2 py-2 my-3" key={index}>
                 <div className="d-flex justify-content-between">
                   <strong>{order.delivery_id}</strong>
                   <span className="text-muted">
@@ -38,7 +41,7 @@ function Order(props) {
                       <i className="fa-solid fa-angle-down pointer"></i>
                     </div>
                   </div>
-                  <div className="hide-detail" id={`order-${index}`}>
+                  <div className="hide-detail" id={`order-item${index}`}>
                     {order.orderproduct.map((el, index) => {
                       return (
                         <div
@@ -71,6 +74,19 @@ function Order(props) {
                         </div>
                       );
                     })}
+                  </div>
+                </div>
+                <div
+                  className="d-grid gap-1 hide-detail"
+                  id={`order-user${index}`}
+                >
+                  <span className="text-muted">Nama : {order.user_name}</span>
+                  <span className="text-muted">
+                    No Hp : {order.user_phone_number}
+                  </span>
+                  <span className="text-muted">Alamat</span>
+                  <div className="p-2 bg-light text-muted rounded">
+                    {order.user_address}
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "prod": "npm run production && purgecss --css public/css/*.css --content public/index.php public/js/*.js --output public/css",
+        "prod": "npm run production",
         "production": "mix --production"
     },
     "devDependencies": {
@@ -16,6 +16,7 @@
         "browser-sync": "^2.27.7",
         "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.6",
+        "laravel-mix-purgecss": "^6.0.0",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^5.0.0",
