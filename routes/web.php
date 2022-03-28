@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminChatController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -35,8 +37,12 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', fn () => Inertia::render('dashboard/DashboardLayout'));
+    Route::get('/dashboard', fn () => Inertia::render('Admin/DashboardLayout'));
     Route::resource('/dashboard/product', ProductController::class);
+
+    Route::get('/dashboard/chat', [AdminChatController::class, 'index']);
+    Route::post('/dashboard/chat/{id}', [AdminChatController::class, 'store']);
+    Route::get('/dashboard/chat/{id}', [AdminChatController::class, 'show']);
 });
 
 Route::middleware(['auth', 'user'])->group(function () {
@@ -49,6 +55,9 @@ Route::middleware(['auth', 'user'])->group(function () {
 
     Route::get('/order', [OrderController::class, 'index']);
     Route::post('/order',  [OrderController::class, 'store']);
+
+    Route::get('/chat', [ChatController::class, 'show']);
+    Route::post('/chat', [ChatController::class, 'store']);
 });
 
 Route::get('/logout', LogoutController::class)->middleware('auth');

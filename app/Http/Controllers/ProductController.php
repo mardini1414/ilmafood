@@ -24,7 +24,7 @@ class ProductController extends Controller
             })->orderBy('id', 'desc')
             ->paginate()
             ->withQueryString();
-        return Inertia::render('dashboard/Product', [
+        return Inertia::render('Admin/Product', [
             'products' => $products,
             'search' => $request->search
         ]);
@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('dashboard/CreateProduct');
+        return Inertia::render('Admin/CreateProduct');
     }
 
     /**
@@ -69,7 +69,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::where('id', $id)->first();
-        return Inertia::render('dashboard/DetailProduct', ['product' => $product]);
+        return Inertia::render('Admin/DetailProduct', ['product' => $product]);
     }
 
     /**
@@ -81,7 +81,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::where('id', $id)->first();
-        return Inertia::render('dashboard/EditProduct', ['product' => $product]);
+        return Inertia::render('Admin/EditProduct', ['product' => $product]);
     }
 
     /**

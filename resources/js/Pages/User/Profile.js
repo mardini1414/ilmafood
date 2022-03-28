@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useForm } from '@inertiajs/inertia-react';
 import MainLayout from '../MainLayout';
-import defaultAvatar from '../../../images/avatar.png';
 
 function Profile(props) {
   const [clicked, setClicked] = useState(false);
@@ -36,7 +35,7 @@ function Profile(props) {
               style={{ width: 'max-content' }}
             >
               <img
-                src={avatar ? `/storage/${avatar}` : defaultAvatar}
+                src={`/storage/${avatar}`}
                 alt="avatar"
                 width={120}
                 height={120}

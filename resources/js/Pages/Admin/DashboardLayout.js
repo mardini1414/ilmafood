@@ -13,10 +13,10 @@ function DashboardLayout({ children }) {
             <span className="text-white me-1">Admin</span>
             <i className="fa-solid fa-circle-user text-white"></i>
           </div>
-          <div className="mx-3">
+          <Link href="/logout" className="mx-3 text-decoration-none">
             <span className="text-white me-1">Logout</span>
             <i className="fa-solid fa-arrow-right-from-bracket text-white"></i>
-          </div>
+          </Link>
         </div>
       </header>
       <div className="container-fluid">
@@ -28,9 +28,13 @@ function DashboardLayout({ children }) {
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
+                  <Link
+                    className="nav-link"
+                    aria-current="page"
+                    href="/dashboard"
+                  >
                     Dashboard
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" href="/dashboard/product">
@@ -38,14 +42,14 @@ function DashboardLayout({ children }) {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" href="/dashboard/order">
                     Orderan
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" href="/dashboard/chat">
                     Pesan
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
