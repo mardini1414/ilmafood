@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../MainLayout';
+import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-react';
 
 function Chat(props) {
-  const { messages } = props;
   const { post, data, setData, reset } = useForm({ message: '' });
+  const { messages, user_id } = props;
 
   function sendMessage() {
     post('/chat', {
       onSuccess: reset(),
-      preserveScroll: true,
+      headers: {
+        'X-Socket-ID': window.Echo.socketId(),
+      },
     });
   }
+
+  useEffect(() => {
+    window.Echo.private(`message.${user_id}`).listen('CreateMessage', (e) => {
+      messages.push(e.message);
+      Inertia.reload();
+    });
+  }, [messages]);
+
   return (
     <MainLayout>
       <div className="position-fixed w-100 start-0 d-flex justify-content-center top-0">
@@ -29,7 +40,12 @@ function Chat(props) {
           <span className="text-light">Admin</span>
         </div>
       </div>
-      <div style={{ height: '100vh' }}>
+      <div
+        style={{
+          height: '100vh',
+          maxHeight: 'max-content',
+        }}
+      >
         <div className="py-4 w-100"></div>
         {messages.length > 0 ? (
           messages.map((message, index) => {

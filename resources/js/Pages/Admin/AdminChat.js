@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DashboardLayout from './DashboardLayout';
-import { Link, useForm, Head } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia';
+import { Link, useForm } from '@inertiajs/inertia-react';
 
 function AdminChat(props) {
-  const { users, messages, id } = props;
+  const { users, messages, id, user_id } = props;
   const { post, data, setData, reset } = useForm({ message: '' });
 
   function sendMessage() {
     post(`/dashboard/chat/${id}`, {
       onSuccess: reset(),
       preserveScroll: true,
+      headers: {
+        'X-Socket-ID': window.Echo.socketId(),
+      },
     });
   }
 
+  useEffect(() => {
+    window.Echo.private(`message.${user_id}`).listen('CreateMessage', (e) => {
+      messages.push(e.message);
+      Inertia.reload();
+    });
+  }, []);
+
   return (
     <DashboardLayout>
-      <div className="row">
+      <div className="row" style={{ height: '100vh', overflow: 'hidden' }}>
         <div
           className="col-md-4 px-0"
-          style={{ overflowY: 'scroll', height: '92vh' }}
+          style={{ overflowY: 'scroll', height: '100vh' }}
         >
           {users.map((user, index) => {
             return (
@@ -41,14 +52,17 @@ function AdminChat(props) {
             );
           })}
         </div>
-        <div className="col-md-8">
+        <div
+          className="col-md-8 scroll-slide"
+          style={{ overflowY: 'scroll', height: '100vh' }}
+        >
           {messages &&
             messages.map((message, index) => {
               if (message.from_id !== 1) {
                 return (
                   <div className="w-100 py-1 px-2 d-flex" key={index}>
                     <div
-                      className="p-2 bg-secondary rounded"
+                      className="p-2 bg-secondary text-light rounded"
                       style={{ maxWidth: 200 }}
                     >
                       {message.message}
@@ -71,11 +85,12 @@ function AdminChat(props) {
                 );
               }
             })}
+          <div className="py-5"></div>
         </div>
       </div>
       <div
-        className="col-md-6 py-2 position-fixed d-flex gap-2"
-        style={{ bottom: '2rem', right: '2rem' }}
+        className="col-md-6 py-2 position-fixed d-flex gap-2 bottom-0"
+        style={{ right: '2rem' }}
       >
         <input
           type="text"

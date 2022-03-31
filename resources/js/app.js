@@ -5,6 +5,16 @@ import { createInertiaApp } from '@inertiajs/inertia-react';
 // import '@popperjs/core';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { InertiaProgress } from '@inertiajs/progress';
+import Echo from 'laravel-echo';
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
+  broadcaster: 'pusher',
+  key: process.env.MIX_PUSHER_APP_KEY,
+  cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+  forceTLS: true,
+});
 
 InertiaProgress.init({
   color: 'rgb(255, 167, 38)',

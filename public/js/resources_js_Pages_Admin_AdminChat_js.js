@@ -13,7 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardLayout */ "./resources/js/Pages/Admin/DashboardLayout.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 
 
 
@@ -21,9 +23,10 @@ __webpack_require__.r(__webpack_exports__);
 function AdminChat(props) {
   var users = props.users,
       messages = props.messages,
-      id = props.id;
+      id = props.id,
+      user_id = props.user_id;
 
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.useForm)({
     message: ''
   }),
       post = _useForm.post,
@@ -34,20 +37,33 @@ function AdminChat(props) {
   function sendMessage() {
     post("/dashboard/chat/".concat(id), {
       onSuccess: reset(),
-      preserveScroll: true
+      preserveScroll: true,
+      headers: {
+        'X-Socket-ID': window.Echo.socketId()
+      }
     });
   }
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    window.Echo["private"]("message.".concat(user_id)).listen('CreateMessage', function (e) {
+      messages.push(e.message);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
+    });
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "row"
+    className: "row",
+    style: {
+      height: '100vh',
+      overflow: 'hidden'
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "col-md-4 px-0",
     style: {
       overflowY: 'scroll',
-      height: '92vh'
+      height: '100vh'
     }
   }, users.map(function (user, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
       href: "/dashboard/chat/".concat(user.id),
       className: "text-decoration-none",
       key: index
@@ -63,14 +79,18 @@ function AdminChat(props) {
       className: "text-dark ms-2"
     }, user.name)));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "col-md-8"
+    className: "col-md-8 scroll-slide",
+    style: {
+      overflowY: 'scroll',
+      height: '100vh'
+    }
   }, messages && messages.map(function (message, index) {
     if (message.from_id !== 1) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "w-100 py-1 px-2 d-flex",
         key: index
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "p-2 bg-secondary rounded",
+        className: "p-2 bg-secondary text-light rounded",
         style: {
           maxWidth: 200
         }
@@ -86,10 +106,11 @@ function AdminChat(props) {
         }
       }, message.message));
     }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "py-5"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "col-md-6 py-2 position-fixed d-flex gap-2",
+    className: "col-md-6 py-2 position-fixed d-flex gap-2 bottom-0",
     style: {
-      bottom: '2rem',
       right: '2rem'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {

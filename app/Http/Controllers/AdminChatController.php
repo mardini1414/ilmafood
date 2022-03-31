@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CreateMessage;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,11 +21,13 @@ class AdminChatController extends Controller
     public function store(Request $request, $id)
     {
         $request->validate(['message' => 'required']);
-        Message::create([
+        $message = Message::create([
             'from_id' => Auth::user()->id,
             'to_id' => $id,
             'message' => $request->message
         ]);
+
+        CreateMessage::dispatch($message);
 
         return back();
     }
@@ -36,7 +39,12 @@ class AdminChatController extends Controller
             ->orWhere([['from_id', '=', $id], ['to_id', '=', Auth::user()->id]])
             ->get();
 
-        $data = ['users' => $users, 'messages' => $messages, 'id' => $id];
+        $data = [
+            'users' => $users,
+            'messages' => $messages,
+            'id' => $id,
+            'user_id' => Auth::user()->id
+        ];
 
         return Inertia::render('Admin/AdminChat', $data);
     }
