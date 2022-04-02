@@ -3,6 +3,7 @@ import { Link, useForm } from '@inertiajs/inertia-react';
 import MainLayout from '../MainLayout';
 
 function Profile(props) {
+  const [selectedImage, setSelectedImage] = useState(null);
   const [clicked, setClicked] = useState(false);
   const { name, email, phone_number, address, avatar } = props.user;
   const { data, setData, post, errors } = useForm({
@@ -25,6 +26,13 @@ function Profile(props) {
     });
   }
 
+  function imageChange(e) {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+    setData('avatar', e.target.files[0]);
+  }
+
   return (
     <MainLayout>
       <div className="pb-5" style={{ height: '100vh' }}>
@@ -35,7 +43,11 @@ function Profile(props) {
               style={{ width: 'max-content' }}
             >
               <img
-                src={`/storage/${avatar}`}
+                src={
+                  selectedImage
+                    ? URL.createObjectURL(selectedImage)
+                    : `/storage/${avatar}`
+                }
                 alt="avatar"
                 width={120}
                 height={120}
@@ -61,7 +73,7 @@ function Profile(props) {
               type="file"
               className="visually-hidden"
               id="avatar"
-              onChange={(e) => setData('avatar', e.target.files[0])}
+              onChange={imageChange}
             />
             <span className="d-block py-3 fw-bold text-dark">{name}</span>
           </div>

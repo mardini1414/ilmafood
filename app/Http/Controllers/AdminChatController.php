@@ -15,7 +15,7 @@ class AdminChatController extends Controller
     {
         $users = User::where('role', 'user')->latest()->get(['id', 'name', 'avatar']);
 
-        return Inertia::render('Admin/AdminChat', compact('users'));
+        return Inertia::render('Admin/Chat', compact('users'));
     }
 
     public function store(Request $request, $id)
@@ -46,6 +46,6 @@ class AdminChatController extends Controller
             'user_id' => Auth::user()->id
         ];
 
-        return Inertia::render('Admin/AdminChat', $data);
+        return Inertia::render('Admin/Chat', $data);
     }
 }

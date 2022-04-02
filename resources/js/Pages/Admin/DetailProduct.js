@@ -6,7 +6,7 @@ function DetailProduct(props) {
     <DashboardLayout>
       <div className="card">
         <div className="card-header">
-          <h2 className="my-3">Detail produk</h2>
+          <h3 className="my-3">Detail produk</h3>
         </div>
         <div className="card-body">
           <div className="d-flex">

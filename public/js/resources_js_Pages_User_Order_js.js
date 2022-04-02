@@ -61,6 +61,11 @@ function Order(props) {
     orderUser.classList.toggle('show-detail');
   }
 
+  function getTime(time) {
+    var res = time.replace('T', ' ');
+    return res.slice(0, 19);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "px-2 pt-2 pb-5",
     style: {
@@ -76,7 +81,7 @@ function Order(props) {
       className: "d-flex justify-content-between"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, order.delivery_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "text-muted"
-    }, order.created_at.slice(0, 9))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, getTime(order.created_at))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "d-flex justify-content-between pt-2"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
       className: "text-danger"
@@ -139,7 +144,7 @@ function Order(props) {
       height: '80vh'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
-    className: "fa-solid fa-rectangle-list text-muted",
+    className: "fa-solid fa-bag-shopping text-muted",
     style: {
       fontSize: '8rem'
     }

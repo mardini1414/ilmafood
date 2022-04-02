@@ -11,6 +11,11 @@ function Order(props) {
     orderUser.classList.toggle('show-detail');
   }
 
+  function getTime(time) {
+    const res = time.replace('T', ' ');
+    return res.slice(0, 19);
+  }
+
   return (
     <MainLayout>
       <div className="px-2 pt-2 pb-5" style={{ height: '100vh' }}>
@@ -22,7 +27,7 @@ function Order(props) {
                   <div className="d-flex justify-content-between">
                     <strong>{order.delivery_id}</strong>
                     <span className="text-muted">
-                      {order.created_at.slice(0, 9)}
+                      {getTime(order.created_at)}
                     </span>
                   </div>
                   <div className="d-flex justify-content-between pt-2">
@@ -99,7 +104,7 @@ function Order(props) {
               style={{ height: '80vh' }}
             >
               <i
-                className="fa-solid fa-rectangle-list text-muted"
+                className="fa-solid fa-bag-shopping text-muted"
                 style={{ fontSize: '8rem' }}
               ></i>
             </div>

@@ -3340,8 +3340,9 @@ function Carousel() {
     className: "text-light ms-4"
   }, "Cepat sampai dan di jamin enak."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: _images_img_slide3_webp__WEBPACK_IMPORTED_MODULE_4__["default"],
-    width: 141,
-    alt: "slide1"
+    width: 100,
+    alt: "slide3",
+    className: "me-2"
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "carousel-indicators"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -8662,7 +8663,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/img-slide3.webp?b1f6404e5ee4e3f028f973cfd45fd151");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/img-slide3.webp?06e3e68f2b6ff63dcc2686ed73c7e404");
 
 /***/ }),
 

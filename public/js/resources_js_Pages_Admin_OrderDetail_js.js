@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_EditProduct_js"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_OrderDetail_js"],{
 
 /***/ "./node_modules/@popperjs/core/lib/createPopper.js":
 /*!*********************************************************!*\
@@ -3216,9 +3216,9 @@ function DashboardLayout(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/EditProduct.js":
+/***/ "./resources/js/Pages/Admin/OrderDetail.js":
 /*!*************************************************!*\
-  !*** ./resources/js/Pages/Admin/EditProduct.js ***!
+  !*** ./resources/js/Pages/Admin/OrderDetail.js ***!
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3228,20 +3228,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardLayout */ "./resources/js/Pages/Admin/DashboardLayout.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _components_Toast__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Toast */ "./resources/js/components/Toast.js");
+/* harmony import */ var _helper_modifytime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper/modifytime */ "./resources/js/helper/modifytime.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _helper_showtoast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helper/showtoast */ "./resources/js/helper/showtoast.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* harmony import */ var _components_Toast__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Toast */ "./resources/js/components/Toast.js");
 
 
 
@@ -3249,161 +3239,104 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function EditProduct(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      selectedImage = _useState2[0],
-      setSelectedImage = _useState2[1];
+function OrderDetail(props) {
+  var flash = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.flash;
+  var order = props.order;
 
-  var flash = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.flash;
-  var fileInput = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    name: props.product.name,
-    stock: props.product.stock,
-    price: props.product.price,
-    discounts: props.product.discounts,
-    category: props.product.category,
-    description: props.product.description,
-    oldImage: props.product.image,
-    image: null,
-    _method: 'put'
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.useForm)({
+    status: order.status === 'diproses' ? 'dikirim' : 'diterima'
   }),
       data = _useForm.data,
-      setData = _useForm.setData,
-      reset = _useForm.reset,
-      post = _useForm.post,
-      errors = _useForm.errors,
-      processing = _useForm.processing;
+      put = _useForm.put;
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    data.oldImage = props.product.image;
-  }, [props.product.image]);
-
-  function imageChange(e) {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
-
-    setData('image', e.target.files[0]);
-  }
-
-  function submit(e) {
-    e.preventDefault();
-    post("/dashboard/product/".concat(props.product.id), {
+  function updateStatus() {
+    put("/dashboard/order/".concat(order.id), {
       onSuccess: function onSuccess() {
-        (0,_helper_showtoast__WEBPACK_IMPORTED_MODULE_4__["default"])();
-        reset('image');
-        fileInput.current.value = '';
+        return (0,_helper_showtoast__WEBPACK_IMPORTED_MODULE_4__["default"])();
       }
     });
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-    onSubmit: submit,
-    className: "col-md-6 d-grid gap-2 mt-3 p-3 shadow rounded"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, "Edit produk"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "text",
-    value: data.name,
-    placeholder: "Nama produk",
-    className: "form-control",
-    onChange: function onChange(e) {
-      return setData('name', e.target.value);
-    }
-  }), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "number",
-    value: data.price,
-    placeholder: "Harga",
-    className: "form-control",
-    onChange: function onChange(e) {
-      return setData('price', e.target.value);
-    }
-  }), errors.price && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "number",
-    value: data.discounts,
-    placeholder: "Potongan",
-    className: "form-control",
-    onChange: function onChange(e) {
-      return setData('discounts', e.target.value);
-    }
-  }), errors.discounts && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "number",
-    value: data.stock,
-    placeholder: "Stok",
-    className: "form-control",
-    onChange: function onChange(e) {
-      return setData('stock', e.target.value);
-    }
-  }), errors.stock && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
-    value: data.description,
-    className: "form-control",
-    placeholder: "Deskripsi",
-    onChange: function onChange(e) {
-      return setData('description', e.target.value);
-    }
-  }), errors.description && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "d-flex gap-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-check-input",
-    name: "category",
-    type: "radio",
-    id: "makanan",
-    value: "makanan",
-    defaultChecked: props.product.category == 'makanan',
-    onChange: function onChange(e) {
-      return setData('category', e.target.value);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-    className: "form-check-label",
-    htmlFor: "makanan"
-  }, "Makanan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-check-input",
-    type: "radio",
-    name: "category",
-    id: "minuman",
-    value: "minuman",
-    defaultChecked: props.product.category == 'minuman',
-    onChange: function onChange(e) {
-      return setData('category', e.target.value);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
-    className: "form-check-label",
-    htmlFor: "minuman"
-  }, "Minuman")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: selectedImage ? URL.createObjectURL(selectedImage) : "/storage/".concat(data.oldImage),
-    alt: "Thumb",
-    width: 300,
-    height: 300,
-    className: "image-fit rounded"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    ref: fileInput,
-    type: "file",
-    className: "form-control form-control-sm",
-    onChange: imageChange
-  }), errors.image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "text-danger"
-  }, errors.image), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "btn btn-primary",
-    type: "submit",
-    disabled: processing
-  }, processing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "spinner-border spinner-border-sm"
-  }) : 'Edit')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Toast__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Detail pesanan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "d-flex gap-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "d-grid gap-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "Id pesanan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "Nama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "No telepon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "Tanggal/waktu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "text-muted"
+  }, "Total Pembayaran")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "d-grid gap-1 px-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, order.delivery_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, order.user_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, order.user_phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, (0,_helper_modifytime__WEBPACK_IMPORTED_MODULE_2__["default"])(order.created_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, order.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
+    className: "text-dark"
+  }, "Rp.", order.total_payment))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "btn btn-sm btn-success mt-3",
+    onClick: updateStatus
+  }, "Update pesanan"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "col-md-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Produk")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
+    className: "table"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    scope: "col"
+  }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    scope: "col"
+  }, "Gambar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    scope: "col"
+  }, "Nama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    scope: "col"
+  }, "Harga"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+    scope: "col"
+  }, "Qty"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, order.orderproduct.map(function (order, index) {
+    index += 1;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
+      key: index
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+      scope: "row"
+    }, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: "/storage/".concat(order.product.image),
+      alt: order.product.name,
+      width: 30,
+      height: 30,
+      className: "rounded image-fit"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.product.price - order.product.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.quantity));
+  }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Toast__WEBPACK_IMPORTED_MODULE_5__["default"], {
     message: flash.message && flash.message
   }));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditProduct);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrderDetail);
 
 /***/ }),
 
@@ -3444,6 +3377,25 @@ function Toast(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Toast);
+
+/***/ }),
+
+/***/ "./resources/js/helper/modifytime.js":
+/*!*******************************************!*\
+  !*** ./resources/js/helper/modifytime.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function modifyTime(time) {
+  var res = time.replace('T', ' ');
+  return res.slice(0, 19);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modifyTime);
 
 /***/ }),
 

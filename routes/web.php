@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminChatController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
@@ -29,16 +30,20 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{id}', [HomeController::class, 'show']);
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::get('/login', [LoginController::class, 'create']);
     Route::post('/login', [LoginController::class, 'store']);
 
-    Route::get('/register', [RegistrationController::class, 'create'])->name('register');
+    Route::get('/register', [RegistrationController::class, 'create']);
     Route::post('/register', [RegistrationController::class, 'store']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Admin/DashboardLayout'));
     Route::resource('/dashboard/product', ProductController::class);
+
+    Route::get('/dashboard/order', [AdminOrderController::class, 'index']);
+    Route::get('/dashboard/order/{id}', [AdminOrderController::class, 'show']);
+    Route::put('/dashboard/order/{id}', [AdminOrderController::class, 'update']);
 
     Route::get('/dashboard/chat', [AdminChatController::class, 'index']);
     Route::post('/dashboard/chat/{id}', [AdminChatController::class, 'store']);

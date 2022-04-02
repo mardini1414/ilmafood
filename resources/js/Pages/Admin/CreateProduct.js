@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import DashboardLayout from './DashboardLayout';
 import { useForm, usePage } from '@inertiajs/inertia-react';
 import Toast from '../../components/Toast';
-import { Toast as MyToast } from 'bootstrap';
+import showToast from '../../helper/showtoast';
 
 function CreateProduct() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -36,11 +36,6 @@ function CreateProduct() {
         setSelectedImage(null);
       },
     });
-  }
-
-  function showToast() {
-    const myToastEl = document.getElementById('my-toast');
-    new MyToast(myToastEl).show();
   }
 
   return (

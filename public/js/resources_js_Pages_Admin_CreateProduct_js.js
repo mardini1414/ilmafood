@@ -3154,7 +3154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardLayout */ "./resources/js/Pages/Admin/DashboardLayout.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _components_Toast__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Toast */ "./resources/js/components/Toast.js");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var _helper_showtoast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helper/showtoast */ "./resources/js/helper/showtoast.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3209,17 +3209,12 @@ function CreateProduct() {
     e.preventDefault();
     post('/dashboard/product', {
       onSuccess: function onSuccess() {
-        showToast();
+        (0,_helper_showtoast__WEBPACK_IMPORTED_MODULE_4__["default"])();
         createForm.current.reset();
         reset();
         setSelectedImage(null);
       }
     });
-  }
-
-  function showToast() {
-    var myToastEl = document.getElementById('my-toast');
-    new bootstrap__WEBPACK_IMPORTED_MODULE_4__.Toast(myToastEl).show();
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
@@ -3437,6 +3432,28 @@ function Toast(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Toast);
+
+/***/ }),
+
+/***/ "./resources/js/helper/showtoast.js":
+/*!******************************************!*\
+  !*** ./resources/js/helper/showtoast.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+
+
+function showToast() {
+  var myToastEl = document.getElementById('my-toast');
+  new bootstrap__WEBPACK_IMPORTED_MODULE_0__.Toast(myToastEl).show();
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showToast);
 
 /***/ }),
 

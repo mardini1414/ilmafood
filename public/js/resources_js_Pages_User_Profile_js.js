@@ -66,10 +66,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Profile(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
-      clicked = _useState2[0],
-      setClicked = _useState2[1];
+      selectedImage = _useState2[0],
+      setSelectedImage = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      clicked = _useState4[0],
+      setClicked = _useState4[1];
 
   var _props$user = props.user,
       name = _props$user.name,
@@ -102,6 +107,14 @@ function Profile(props) {
     });
   }
 
+  function imageChange(e) {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+
+    setData('avatar', e.target.files[0]);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pb-5",
     style: {
@@ -117,7 +130,7 @@ function Profile(props) {
       width: 'max-content'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: "/storage/".concat(avatar),
+    src: selectedImage ? URL.createObjectURL(selectedImage) : "/storage/".concat(avatar),
     alt: "avatar",
     width: 120,
     height: 120,
@@ -137,9 +150,7 @@ function Profile(props) {
     type: "file",
     className: "visually-hidden",
     id: "avatar",
-    onChange: function onChange(e) {
-      return setData('avatar', e.target.files[0]);
-    }
+    onChange: imageChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "d-block py-3 fw-bold text-dark"
   }, name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
