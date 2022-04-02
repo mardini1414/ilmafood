@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import MainLayout from '../MainLayout';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-react';
@@ -6,6 +6,7 @@ import { useForm } from '@inertiajs/inertia-react';
 function Chat(props) {
   const { post, data, setData, reset } = useForm({ message: '' });
   const { messages, user_id } = props;
+  const bodyMessage = useRef();
 
   function sendMessage() {
     post('/chat', {
@@ -21,7 +22,7 @@ function Chat(props) {
       messages.push(e.message);
       Inertia.reload();
     });
-    window.scrollTo(0, document.body.scrollHeight);
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
 
   return (
@@ -42,10 +43,11 @@ function Chat(props) {
         </div>
       </div>
       <div
+        ref={bodyMessage}
         className="bg-light"
         style={{
-          minHeight: '100vh',
-          height: 'max-content',
+          height: '100vh',
+          overflowY: 'scroll',
         }}
       >
         <div className="py-4 w-100"></div>
@@ -57,7 +59,7 @@ function Chat(props) {
                   <div
                     className="p-2 bg-secondary text-white rounded"
                     style={{
-                      maxWidth: 200,
+                      maxWidth: 150,
                     }}
                   >
                     {message.message}
@@ -72,7 +74,7 @@ function Chat(props) {
                 >
                   <div
                     className="p-2 bg-primary text-light rounded"
-                    style={{ maxWidth: 200 }}
+                    style={{ maxWidth: 150 }}
                   >
                     {message.message}
                   </div>

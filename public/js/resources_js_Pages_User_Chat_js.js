@@ -66,6 +66,7 @@ function Chat(props) {
 
   var messages = props.messages,
       user_id = props.user_id;
+  var bodyMessage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
 
   function sendMessage() {
     post('/chat', {
@@ -81,7 +82,7 @@ function Chat(props) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-    window.scrollTo(0, document.body.scrollHeight);
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 start-0 d-flex justify-content-center top-0"
@@ -99,10 +100,11 @@ function Chat(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-light"
   }, "Admin"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    ref: bodyMessage,
     className: "bg-light",
     style: {
-      minHeight: '100vh',
-      height: 'max-content'
+      height: '100vh',
+      overflowY: 'scroll'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "py-4 w-100"
@@ -114,7 +116,7 @@ function Chat(props) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "p-2 bg-secondary text-white rounded",
         style: {
-          maxWidth: 200
+          maxWidth: 150
         }
       }, message.message));
     } else {
@@ -124,7 +126,7 @@ function Chat(props) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "p-2 bg-primary text-light rounded",
         style: {
-          maxWidth: 200
+          maxWidth: 150
         }
       }, message.message));
     }

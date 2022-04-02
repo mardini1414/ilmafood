@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import DashboardLayout from './DashboardLayout';
 import { Inertia } from '@inertiajs/inertia';
 import { Link, useForm } from '@inertiajs/inertia-react';
@@ -6,6 +6,7 @@ import { Link, useForm } from '@inertiajs/inertia-react';
 function AdminChat(props) {
   const { users, messages, id, user_id } = props;
   const { post, data, setData, reset } = useForm({ message: '' });
+  const bodyMessage = useRef();
 
   function sendMessage() {
     post(`/dashboard/chat/${id}`, {
@@ -17,17 +18,12 @@ function AdminChat(props) {
     });
   }
 
-  function scroll() {
-    const el = document.getElementById('message-body');
-    el.scrollTo(0, el.scrollHeight);
-  }
-
   useEffect(() => {
     window.Echo.private(`message.${user_id}`).listen('CreateMessage', (e) => {
       messages.push(e.message);
       Inertia.reload();
     });
-    scroll();
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
 
   return (
@@ -46,7 +42,11 @@ function AdminChat(props) {
               >
                 <div className="p-2 bg-white rounded border-bottom">
                   <img
-                    src={`/storage/${user.avatar}`}
+                    src={
+                      user.avatar !== null
+                        ? `/storage/${user.avatar}`
+                        : '/images/avatar.png'
+                    }
                     alt={user}
                     width={40}
                     height={40}
@@ -59,7 +59,7 @@ function AdminChat(props) {
           })}
         </div>
         <div
-          id="message-body"
+          ref={bodyMessage}
           className="col-md-8 scroll-slide"
           style={{ overflowY: 'scroll', height: '100vh' }}
         >
@@ -104,7 +104,7 @@ function AdminChat(props) {
           placeholder="mulai mengetik"
           value={data.message}
           onChange={(e) => setData('message', e.target.value)}
-          className="form-control form-control-sm"
+          className="form-control form-control-sm border border-primary"
         />
         <div
           onClick={sendMessage}

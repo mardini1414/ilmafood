@@ -34,6 +34,8 @@ function AdminChat(props) {
       setData = _useForm.setData,
       reset = _useForm.reset;
 
+  var bodyMessage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
   function sendMessage() {
     post("/dashboard/chat/".concat(id), {
       onSuccess: reset(),
@@ -44,17 +46,12 @@ function AdminChat(props) {
     });
   }
 
-  function scroll() {
-    var el = document.getElementById('message-body');
-    el.scrollTo(0, el.scrollHeight);
-  }
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.Echo["private"]("message.".concat(user_id)).listen('CreateMessage', function (e) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-    scroll();
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "row",
@@ -76,7 +73,7 @@ function AdminChat(props) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "p-2 bg-white rounded border-bottom"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: "/storage/".concat(user.avatar),
+      src: user.avatar !== null ? "/storage/".concat(user.avatar) : '/images/avatar.png',
       alt: user,
       width: 40,
       height: 40,
@@ -85,7 +82,7 @@ function AdminChat(props) {
       className: "text-dark ms-2"
     }, user.name)));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    id: "message-body",
+    ref: bodyMessage,
     className: "col-md-8 scroll-slide",
     style: {
       overflowY: 'scroll',
@@ -127,7 +124,7 @@ function AdminChat(props) {
     onChange: function onChange(e) {
       return setData('message', e.target.value);
     },
-    className: "form-control form-control-sm"
+    className: "form-control form-control-sm border border-primary"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     onClick: sendMessage,
     className: "pointer bg-primary rounded d-flex justify-content-center align-items-center p-0",
