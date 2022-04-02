@@ -31,7 +31,7 @@ function Chat(props) {
           style={{ maxWidth: 414 }}
         >
           <img
-            src="/storage/image/avatar/avatar.png"
+            src="/images/avatar.png"
             alt="avatar"
             width={40}
             height={40}

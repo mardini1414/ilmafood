@@ -130,7 +130,7 @@ function Profile(props) {
       width: 'max-content'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: selectedImage ? URL.createObjectURL(selectedImage) : "/storage/".concat(avatar),
+    src: selectedImage ? URL.createObjectURL(selectedImage) : avatar ? "/storage/".concat(avatar) : '/images/avatar.png',
     alt: "avatar",
     width: 120,
     height: 120,

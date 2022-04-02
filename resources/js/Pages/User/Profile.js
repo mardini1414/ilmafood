@@ -46,7 +46,9 @@ function Profile(props) {
                 src={
                   selectedImage
                     ? URL.createObjectURL(selectedImage)
-                    : `/storage/${avatar}`
+                    : avatar
+                    ? `/storage/${avatar}`
+                    : '/images/avatar.png'
                 }
                 alt="avatar"
                 width={120}

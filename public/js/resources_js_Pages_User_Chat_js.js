@@ -90,7 +90,7 @@ function Chat(props) {
       maxWidth: 414
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: "/storage/image/avatar/avatar.png",
+    src: "/images/avatar.png",
     alt: "avatar",
     width: 40,
     height: 40,
