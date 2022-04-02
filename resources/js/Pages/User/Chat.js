@@ -21,6 +21,7 @@ function Chat(props) {
       messages.push(e.message);
       Inertia.reload();
     });
+    window.scrollTo(0, document.body.scrollHeight);
   }, [messages]);
 
   return (
@@ -41,9 +42,10 @@ function Chat(props) {
         </div>
       </div>
       <div
+        className="bg-light"
         style={{
-          height: '100vh',
-          maxHeight: 'max-content',
+          minHeight: '100vh',
+          height: 'max-content',
         }}
       >
         <div className="py-4 w-100"></div>
@@ -89,7 +91,7 @@ function Chat(props) {
             ></i>
           </div>
         )}
-        <div className="py-5 w-100"></div>
+        <div className="py-5 w-100 bg-light"></div>
       </div>
       <div
         className="position-fixed w-100 py-2 start-0 d-flex justify-content-center"

@@ -44,12 +44,18 @@ function AdminChat(props) {
     });
   }
 
+  function scroll() {
+    var el = document.getElementById('message-body');
+    el.scrollTo(0, el.scrollHeight);
+  }
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     window.Echo["private"]("message.".concat(user_id)).listen('CreateMessage', function (e) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-  }, []);
+    scroll();
+  }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "row",
     style: {
@@ -79,6 +85,7 @@ function AdminChat(props) {
       className: "text-dark ms-2"
     }, user.name)));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    id: "message-body",
     className: "col-md-8 scroll-slide",
     style: {
       overflowY: 'scroll',

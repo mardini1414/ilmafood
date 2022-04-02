@@ -81,6 +81,7 @@ function Chat(props) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
+    window.scrollTo(0, document.body.scrollHeight);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 start-0 d-flex justify-content-center top-0"
@@ -98,9 +99,10 @@ function Chat(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-light"
   }, "Admin"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bg-light",
     style: {
-      height: '100vh',
-      maxHeight: 'max-content'
+      minHeight: '100vh',
+      height: 'max-content'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "py-4 w-100"
@@ -137,7 +139,7 @@ function Chat(props) {
       fontSize: '8rem'
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "py-5 w-100"
+    className: "py-5 w-100 bg-light"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 py-2 start-0 d-flex justify-content-center",
     style: {

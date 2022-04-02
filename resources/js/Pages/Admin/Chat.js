@@ -17,12 +17,18 @@ function AdminChat(props) {
     });
   }
 
+  function scroll() {
+    const el = document.getElementById('message-body');
+    el.scrollTo(0, el.scrollHeight);
+  }
+
   useEffect(() => {
     window.Echo.private(`message.${user_id}`).listen('CreateMessage', (e) => {
       messages.push(e.message);
       Inertia.reload();
     });
-  }, []);
+    scroll();
+  }, [messages]);
 
   return (
     <DashboardLayout>
@@ -53,6 +59,7 @@ function AdminChat(props) {
           })}
         </div>
         <div
+          id="message-body"
           className="col-md-8 scroll-slide"
           style={{ overflowY: 'scroll', height: '100vh' }}
         >
