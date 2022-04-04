@@ -10,9 +10,14 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('id', 'desc')->paginate();
+        $products = Product::orderBy('id', 'desc')->paginate(4);
+
+        if ($request->wantsJson()) {
+            return $products;
+        }
+
         Auth::user() && $carts = Cart::where('user_id', Auth::user()->id)->get(['id']);
         $data = [
             'products' => $products,

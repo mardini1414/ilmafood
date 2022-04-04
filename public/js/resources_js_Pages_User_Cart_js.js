@@ -122,12 +122,12 @@ function Cart(props) {
   }, "total pembayaran"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
     className: "text-orange"
   }, "Rp.", totalPayment))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "d-flex justify-content-end gap-2 pt-3 px-1",
+    className: "d-flex justify-content-end pt-3 px-1",
     style: {
       paddingBottom: '5rem'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "btn btn-sm btn-danger",
+    className: "btn btn-sm btn-danger me-2",
     onClick: function onClick() {
       return destroy('/cart');
     }

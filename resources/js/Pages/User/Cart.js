@@ -71,11 +71,11 @@ function Cart(props) {
                 </div>
               </div>
               <div
-                className="d-flex justify-content-end gap-2 pt-3 px-1"
+                className="d-flex justify-content-end pt-3 px-1"
                 style={{ paddingBottom: '5rem' }}
               >
                 <button
-                  className="btn btn-sm btn-danger"
+                  className="btn btn-sm btn-danger me-2"
                   onClick={() => destroy('/cart')}
                 >
                   Hapus

@@ -120,9 +120,9 @@ function Profile(props) {
         <div className="p-2">
           <div className="d-grid gap-2 p-2 bg-white rounded">
             {clicked ? (
-              <div className="d-flex gap-2">
+              <div className="d-flex">
                 <button
-                  className="btn btn-sm btn-secondary pointer"
+                  className="btn btn-sm btn-secondary pointer me-2"
                   onClick={() => {
                     setClicked(!clicked);
                     for (let key in errors) {

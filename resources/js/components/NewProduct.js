@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 
 function NewProduct({ data }) {
-  const newProduct = data.filter((el, i) => i < 10);
+  const newProduct = data.filter((el, i) => i < 5);
   return (
     <div className="mt-2 px-2">
       <div className="py-1">

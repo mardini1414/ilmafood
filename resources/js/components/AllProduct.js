@@ -6,10 +6,10 @@ function AllProduct(props) {
     <div className="mt-3 pb-5 mb-3 px-2">
       <h6 className="text-small text-dark">Mungkin kamu suka</h6>
       <div className="row gx-1 gy-3">
-        {props.data.map((el, index) => {
+        {props.data.map((el) => {
           return (
             <Link
-              key={index}
+              key={el.id}
               href={`/product/${el.id}`}
               className="col-6 d-block text-decoration-none"
             >
@@ -46,6 +46,9 @@ function AllProduct(props) {
           );
         })}
       </div>
+      {props.isLoading ? (
+        <div className="py-2 bg-light text-muted text-center">memuat...</div>
+      ) : null}
     </div>
   );
 }

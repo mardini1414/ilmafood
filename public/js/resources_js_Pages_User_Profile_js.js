@@ -191,9 +191,9 @@ function Profile(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "d-grid gap-2 p-2 bg-white rounded"
   }, clicked ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "d-flex gap-2"
+    className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "btn btn-sm btn-secondary pointer",
+    className: "btn btn-sm btn-secondary pointer me-2",
     onClick: function onClick() {
       setClicked(!clicked);
 
