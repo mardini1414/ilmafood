@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 
-function MyPoint() {
+function Announcement() {
   return (
     <div className="px-2">
       <div className="px-2 py-1 rounded mt-2 d-flex justify-content-between align-items-center bg-white">
         <span className="text-small text-muted">
-          Kumpulkan point dan tukarkan dengan hadiah.{' '}
+          Ilmafood sekarang lagi bagi bagi hadiah loh, Buruan cek sekarang.{' '}
           <Link className="text-orange text-decoration-none">
-            <span>Kumpulkan sekarang</span>
+            <span>Cek sekarang</span>
           </Link>
         </span>
         <i
@@ -20,4 +20,4 @@ function MyPoint() {
   );
 }
 
-export default MyPoint;
+export default Announcement;

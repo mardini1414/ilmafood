@@ -3,12 +3,13 @@ import { useForm } from '@inertiajs/inertia-react';
 import { Toast as MyToast } from 'bootstrap';
 
 function BtnDelProduct(props) {
-  const { delete: destroy } = useForm({
+  const { post } = useForm({
     image: props.image,
+    _method: 'delete',
   });
 
   function submit() {
-    destroy(`/dashboard/product/${props.id}`, {
+    post(`/dashboard/product/${props.id}`, {
       onSuccess: () => {
         showToast();
       },

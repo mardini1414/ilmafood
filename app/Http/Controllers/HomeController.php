@@ -12,7 +12,8 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::orderBy('id', 'desc')->paginate(4);
+        $products = Product::orderBy('id', 'desc')->paginate(6);
+        $hotProduct = Product::where('stock', '<=', 10)->paginate(6);
 
         if ($request->wantsJson()) {
             return $products;
@@ -21,10 +22,10 @@ class HomeController extends Controller
         Auth::user() && $carts = Cart::where('user_id', Auth::user()->id)->get(['id']);
         $data = [
             'products' => $products,
+            'hot_product' => $hotProduct,
+            'user' => Auth::user() ? Auth::user()->name : false,
             'isEmptyCart' => Auth::user() ? count($carts) > 0 : false
         ];
-
-
 
         return Inertia::render('Home', $data);
     }

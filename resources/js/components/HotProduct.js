@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 
-function AllProduct({ data, isLoading }) {
+function HotProduct({ data }) {
   return (
-    <div className="mt-3 pb-5 mb-3 px-2">
-      <h6 className="text-small text-dark">Semua produk</h6>
-      <div className="row gx-1 gy-3">
+    <div className="p-2">
+      <h6 className="text-small">Produk terlaris</h6>
+      <div
+        className="d-flex scroll-slide"
+        style={{
+          overflowX: 'scroll',
+        }}
+      >
         {data.map((el) => {
           return (
             <Link
@@ -23,6 +28,14 @@ function AllProduct({ data, isLoading }) {
                   className="rounded image-fit"
                 />
                 <div className="d-grid gap-1">
+                  <div
+                    className="text-light bg-danger px-1 rounded-3 mt-3"
+                    style={{
+                      width: 'max-content',
+                    }}
+                  >
+                    Terlaris
+                  </div>
                   <span className="text-muted text-small text-start fw-normal mt-2">
                     {el.name}
                   </span>
@@ -46,11 +59,8 @@ function AllProduct({ data, isLoading }) {
           );
         })}
       </div>
-      {isLoading ? (
-        <div className="py-2 bg-light text-muted text-center">memuat...</div>
-      ) : null}
     </div>
   );
 }
 
-export default AllProduct;
+export default HotProduct;

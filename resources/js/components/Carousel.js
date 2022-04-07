@@ -45,7 +45,7 @@ function Carousel() {
               <h6 className="text-light ms-4">
                 Cepat sampai dan di jamin enak.
               </h6>
-              <img src={imgSlide3} width={100} alt="slide3" className="me-2" />
+              <img src={imgSlide3} width={100} alt="slide3" className="mb-2" />
             </div>
           </div>
         </div>

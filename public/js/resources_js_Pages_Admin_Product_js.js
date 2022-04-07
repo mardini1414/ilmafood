@@ -3347,12 +3347,13 @@ __webpack_require__.r(__webpack_exports__);
 
 function BtnDelProduct(props) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.useForm)({
-    image: props.image
+    image: props.image,
+    _method: 'delete'
   }),
-      destroy = _useForm["delete"];
+      post = _useForm.post;
 
   function submit() {
-    destroy("/dashboard/product/".concat(props.id), {
+    post("/dashboard/product/".concat(props.id), {
       onSuccess: function onSuccess() {
         showToast();
       }

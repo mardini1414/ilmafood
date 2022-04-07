@@ -100,6 +100,7 @@ function Register(_ref) {
     className: "text-dark"
   }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "password",
+    autoComplete: "off",
     value: data.password,
     className: "form-control rounded-pill border-orange",
     id: "password",

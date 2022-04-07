@@ -62,6 +62,7 @@ function Register({ flash }) {
             </label>
             <input
               type="password"
+              autoComplete="off"
               value={data.password}
               className="form-control rounded-pill border-orange"
               id="password"
