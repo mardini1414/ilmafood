@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
+import Loading from './Loading';
 
 function AllProduct({ data, isLoading }) {
   return (
@@ -46,9 +47,11 @@ function AllProduct({ data, isLoading }) {
           );
         })}
       </div>
-      {isLoading ? (
-        <div className="py-2 bg-light text-muted text-center">memuat...</div>
-      ) : null}
+      {isLoading && (
+        <div className="d-flex justify-content-center">
+          <Loading />
+        </div>
+      )}
     </div>
   );
 }

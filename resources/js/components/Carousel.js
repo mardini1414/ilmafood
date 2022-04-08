@@ -42,9 +42,7 @@ function Carousel() {
           </div>
           <div className="carousel-item">
             <div className="d-flex justify-content-evenly align-items-center bg-mygradient rounded">
-              <h6 className="text-light ms-4">
-                Cepat sampai dan di jamin enak.
-              </h6>
+              <h6 className="text-light ms-4">Temukan minuman favoritmu</h6>
               <img src={imgSlide3} width={100} alt="slide3" className="mb-2" />
             </div>
           </div>

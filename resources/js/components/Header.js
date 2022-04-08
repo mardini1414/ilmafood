@@ -4,7 +4,10 @@ import { Link } from '@inertiajs/inertia-react';
 function Header({ isEmptyCart }) {
   return (
     <header className="d-flex py-3 px-2 align-items-center">
-      <div className="input-search input-group rounded-pill overflow-hidden border">
+      <Link
+        href="/search"
+        className="input-search input-group rounded-pill overflow-hidden border text-decoration-none"
+      >
         <span className="input-group-text bg-white border-0">
           <i className="fa-solid fa-magnifying-glass text-muted"></i>
         </span>
@@ -13,7 +16,7 @@ function Header({ isEmptyCart }) {
           className="form-control form-control-sm border-0 search-form"
           placeholder="Cari disini"
         />
-      </div>
+      </Link>
       <Link href="/cart" className="p-2 position-relative">
         <i className="fa-solid fa-cart-shopping cart-icon text-muted"></i>
         {isEmptyCart == true ? (

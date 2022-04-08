@@ -28,6 +28,7 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{id}', [HomeController::class, 'show']);
+Route::get('/search', [HomeController::class, 'search']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create']);

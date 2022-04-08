@@ -36,4 +36,13 @@ class HomeController extends Controller
 
         return Inertia::render('DetailProduct', $data);
     }
+
+    public function search(Request $request)
+    {
+        if ($request->wantsJson()) {
+            $products = Product::where('name', 'like', "%{$request->q}%")->paginate(6);
+            return $products;
+        }
+        return Inertia::render('Search');
+    }
 }

@@ -12,7 +12,7 @@ function Product(props) {
   const { links } = props.products;
 
   const { data, setData, get } = useForm({
-    search: props.search || '',
+    search: '',
   });
 
   function search() {

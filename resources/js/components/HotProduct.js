@@ -16,14 +16,14 @@ function HotProduct({ data }) {
             <Link
               key={el.id}
               href={`/product/${el.id}`}
-              className="col-6 d-block text-decoration-none"
+              className="col-5 d-block text-decoration-none"
             >
               <div className="bg-white p-1 rounded text-center">
                 <img
                   src={`/storage/${el.image}`}
                   alt={el.name}
                   width="100%"
-                  height={170}
+                  height={150}
                   loading="lazy"
                   className="rounded image-fit"
                 />

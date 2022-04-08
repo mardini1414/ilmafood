@@ -3248,7 +3248,7 @@ function Product(props) {
   var links = props.products.links;
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.useForm)({
-    search: props.search || ''
+    search: ''
   }),
       data = _useForm.data,
       setData = _useForm.setData,
