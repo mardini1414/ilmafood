@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -38,6 +39,14 @@ class CartController extends Controller
         foreach ($carts as $cart) {
             if ($cart['product_id'] == $request->productId) {
                 return back()->with('message', 'produk sudah ada di keranjang');
+            }
+        }
+
+        $products = Product::where('id', $request->productId)->get(['stock']);
+
+        foreach ($products as $product) {
+            if ($product['stock'] == 0) {
+                return back()->with('message', 'Maaf stok sedang kosong');
             }
         }
 

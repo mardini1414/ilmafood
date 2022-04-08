@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from './MainLayout';
-import { useForm, usePage, Link } from '@inertiajs/inertia-react';
+import { useForm, usePage } from '@inertiajs/inertia-react';
 
 function DetailProduct(props) {
   const { id, image, name, price, discounts, category, stock, description } =
@@ -44,12 +44,7 @@ function DetailProduct(props) {
           />
         </div>
         {flash.message && (
-          <div className="alert alert-warning mt-2">
-            {flash.message} cek{' '}
-            <Link href="/cart" className="text-warning">
-              disini
-            </Link>
-          </div>
+          <div className="alert alert-warning mt-2">{flash.message}</div>
         )}
         <div className="my-2 bg-white p-1 rounded">
           <div className="d-flex justify-content-between">

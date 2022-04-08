@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -32,6 +33,10 @@ class OrderController extends Controller
         $shippingCost = 5000;
 
         foreach ($carts as $cart) {
+            Product::where('id', $cart['product']['id'])->update([
+                'stock' => $cart['product']['stock'] - $cart['quantity']
+            ]);
+
             $price = ($cart['product']['price'] - $cart['product']['discounts']) * $cart['quantity'];
             $total += $price;
         }
