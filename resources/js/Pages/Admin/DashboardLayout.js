@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
+import NavLink from '../../components/NavLink';
 
 function DashboardLayout({ children }) {
   return (
     <>
-      <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <header className="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
           ILMAFOOD
         </a>
@@ -23,33 +24,29 @@ function DashboardLayout({ children }) {
         <div className="row">
           <nav
             id="sidebarMenu"
-            className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+            className="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse"
           >
             <div className="position-sticky pt-3">
               <ul className="nav flex-column">
                 <li className="nav-item">
-                  <Link
-                    className="nav-link"
-                    aria-current="page"
-                    href="/dashboard"
+                  <NavLink title="Dashboard" link="/dashboard" />
+                </li>
+                <li className="nav-item">
+                  <NavLink title="Produk" link="/dashboard/product" />
+                </li>
+                <li className="nav-item">
+                  <NavLink title="Pesanan" link="/dashboard/order" />
+                </li>
+                <li className="nav-item">
+                  <NavLink title="Pesan" link="/dashboard/chat" />
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-secondary"
+                    href="/dashboard/report"
                   >
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/dashboard/product">
-                    Produk
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/dashboard/order">
-                    Orderan
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/dashboard/chat">
-                    Pesan
-                  </Link>
+                    Laporan
+                  </a>
                 </li>
               </ul>
             </div>

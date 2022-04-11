@@ -1,6 +1,5 @@
 import React from 'react';
 import DashboardLayout from './DashboardLayout';
-import modifyTime from '../../helper/modifytime';
 import { useForm, usePage } from '@inertiajs/inertia-react';
 import showToast from '../../helper/showtoast';
 import Toast from '../../components/Toast';
@@ -20,10 +19,10 @@ function DetailOrder(props) {
 
   return (
     <DashboardLayout>
-      <div className="d-flex">
+      <div className="d-flex gap-2 mt-3">
         <div className="card col-md-6">
-          <div className="card-header">
-            <h3>Detail pesanan</h3>
+          <div className="card-header bg-primary">
+            <h3 className="text-light">Detail pesanan</h3>
           </div>
           <div className="card-body">
             <div className="d-flex gap-4">
@@ -39,9 +38,7 @@ function DetailOrder(props) {
                 <strong className="text-dark">{order.delivery_id}</strong>
                 <strong className="text-dark">{order.user_name}</strong>
                 <strong className="text-dark">{order.user_phone_number}</strong>
-                <strong className="text-dark">
-                  {modifyTime(order.created_at)}
-                </strong>
+                <strong className="text-dark">{order.created_at}</strong>
                 <strong className="text-dark">{order.status}</strong>
                 <strong className="text-dark">Rp.{order.total_payment}</strong>
               </div>
@@ -56,8 +53,8 @@ function DetailOrder(props) {
         </div>
         <div className="col-md-6">
           <div className="card">
-            <div className="card-header">
-              <h3>Produk</h3>
+            <div className="card-header bg-warning">
+              <h3 className="text-light">Produk</h3>
             </div>
             <div className="card-body">
               <table className="table">

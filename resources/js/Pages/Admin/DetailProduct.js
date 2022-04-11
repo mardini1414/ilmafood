@@ -1,12 +1,13 @@
 import React from 'react';
 import DashboardLayout from './DashboardLayout';
+import formatNumber from '../../helper/formatnumber';
 
 function DetailProduct(props) {
   return (
     <DashboardLayout>
-      <div className="card">
-        <div className="card-header">
-          <h3 className="my-3">Detail produk</h3>
+      <div className="card mt-3">
+        <div className="card-header bg-warning">
+          <h3 className="my-3 text-light">Detail produk</h3>
         </div>
         <div className="card-body">
           <div className="d-flex">
@@ -19,30 +20,26 @@ function DetailProduct(props) {
                 height={300}
               />
             </div>
-            <div className="mx-4" style={{ minWidth: 100 }}>
-              <strong>Nama produk </strong>
-              <br />
-              <strong>Stok</strong>
-              <br />
-              <strong>Harga</strong>
-              <br />
-              <strong>Potongan</strong>
-              <br />
-              <strong>Kategori</strong>
-              <br />
-              <strong>Deskripsi</strong>
+            <div className="w-50 mx-4 text-muted" style={{ minWidth: 100 }}>
+              <span className="d-block">Nama produk </span>
+              <span className="d-block">Stok</span>
+              <span className="d-block">Harga</span>
+              <span className="d-block">Potongan</span>
+              <span className="d-block">Kategori</span>
+              <span className="d-block">Deskripsi</span>
             </div>
-            <div className="text-muted">
-              <span> {props.product.name}</span>
-              <br />
-              <span> {props.product.stock}</span>
-              <br />
-              <span> {props.product.price}</span>
-              <br />
-              <span> {props.product.discounts}</span>
-              <br />
-              <span> {props.product.category}</span>
-              <br />
+            <div className="w-50 text-dark">
+              <strong className="d-block"> {props.product.name}</strong>
+              <strong className="d-block"> {props.product.stock}</strong>
+              <strong className="d-block">
+                {' '}
+                {formatNumber(props.product.price)}
+              </strong>
+              <strong className="d-block">
+                {' '}
+                {formatNumber(props.product.discounts)}
+              </strong>
+              <strong className="d-block"> {props.product.category}</strong>
               <p>{props.product.description}</p>
             </div>
           </div>

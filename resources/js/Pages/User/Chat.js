@@ -22,7 +22,7 @@ function Chat(props) {
       messages.push(e.message);
       Inertia.reload();
     });
-    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
+    window.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
 
   return (
@@ -44,9 +44,10 @@ function Chat(props) {
       </div>
       <div
         ref={bodyMessage}
-        className="bg-light"
+        className="bg-light scroll-slide"
         style={{
-          height: '100vh',
+          height: 'max-content',
+          minHeight: '100vh',
           overflowY: 'scroll',
         }}
       >

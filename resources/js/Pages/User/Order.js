@@ -1,5 +1,6 @@
 import React from 'react';
 import MainLayout from '../MainLayout';
+import formatNumber from '../../helper/formatnumber';
 
 function Order(props) {
   const { orders } = props;
@@ -9,11 +10,6 @@ function Order(props) {
     const orderUser = document.getElementById(`order-user${index}`);
     orderItem.classList.toggle('show-detail');
     orderUser.classList.toggle('show-detail');
-  }
-
-  function getTime(time) {
-    const res = time.replace('T', ' ');
-    return res.slice(0, 19);
   }
 
   return (
@@ -26,13 +22,11 @@ function Order(props) {
                 <div className="bg-white rounded px-2 py-2 my-3" key={index}>
                   <div className="d-flex justify-content-between">
                     <strong>{order.delivery_id}</strong>
-                    <span className="text-muted">
-                      {getTime(order.created_at)}
-                    </span>
+                    <span className="text-muted">{order.created_at}</span>
                   </div>
                   <div className="d-flex justify-content-between pt-2">
                     <strong className="text-danger">
-                      Rp.{order.total_payment}
+                      Rp {formatNumber(order.total_payment)}
                     </strong>
                     <div className="status-order-finised rounded">
                       {order.status}

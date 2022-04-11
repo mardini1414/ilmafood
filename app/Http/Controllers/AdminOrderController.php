@@ -12,7 +12,7 @@ class AdminOrderController extends Controller
     {
         $orders = Order::orderBy('id', 'desc')
             ->select(['id', 'user_name', 'user_phone_number', 'user_address', 'delivery_id', 'status', 'total_payment', 'created_at'])
-            ->paginate();
+            ->paginate(8);
 
         return Inertia::render('Admin/Order', compact('orders'));
     }

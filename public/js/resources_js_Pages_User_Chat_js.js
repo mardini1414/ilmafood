@@ -82,7 +82,7 @@ function Chat(props) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
+    window.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 start-0 d-flex justify-content-center top-0"
@@ -101,9 +101,10 @@ function Chat(props) {
     className: "text-light"
   }, "Admin"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     ref: bodyMessage,
-    className: "bg-light",
+    className: "bg-light scroll-slide",
     style: {
-      height: '100vh',
+      height: 'max-content',
+      minHeight: '100vh',
       overflowY: 'scroll'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

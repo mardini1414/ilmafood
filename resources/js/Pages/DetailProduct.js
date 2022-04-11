@@ -1,6 +1,7 @@
 import React from 'react';
 import MainLayout from './MainLayout';
 import { useForm, usePage } from '@inertiajs/inertia-react';
+import formatNumber from '../helper/formatnumber';
 
 function DetailProduct(props) {
   const { id, image, name, price, discounts, category, stock, description } =
@@ -76,8 +77,12 @@ function DetailProduct(props) {
               <span className="d-block py-1 text-muted">Stok</span>
             </div>
             <div className="w-50">
-              <span className="d-block py-1 text-dark">{price}</span>
-              <span className="d-block py-1 text-dark">{discounts}</span>
+              <span className="d-block py-1 text-dark">
+                {formatNumber(price)}
+              </span>
+              <span className="d-block py-1 text-dark">
+                {formatNumber(discounts)}
+              </span>
               <span className="d-block py-1 text-dark">{category}</span>
               <span className="d-block py-1 text-dark">{stock}</span>
             </div>
@@ -95,7 +100,7 @@ function DetailProduct(props) {
         style={{ bottom: '3.5rem' }}
       >
         <button
-          className="btn btn-sm bg-orange rounded-pill text-light text-small"
+          className="btn bg-orange rounded-pill text-light text-small px-5"
           onClick={addToCart}
         >
           <i className="fa-solid fa-cart-plus"></i> Tambah

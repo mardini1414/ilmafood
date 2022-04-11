@@ -19,10 +19,10 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::query()
-            ->when($request->search, function ($query, $search) {
+            ->when($request->search ?? null, function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
             })->orderBy('id', 'desc')
-            ->paginate()
+            ->paginate(12)
             ->withQueryString();
         return Inertia::render('Admin/Product', [
             'products' => $products,

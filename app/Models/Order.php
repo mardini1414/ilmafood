@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +19,12 @@ class Order extends Model
         'user_address',
         'total_payment'
     ];
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d h:i:s');
+    }
+
 
     public function orderproduct()
     {

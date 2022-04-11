@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminChatController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -39,8 +40,9 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', fn () => Inertia::render('Admin/DashboardLayout'));
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/dashboard/product', ProductController::class);
+    Route::get('/dashboard/report', [DashboardController::class, 'report']);
 
     Route::get('/dashboard/order', [AdminOrderController::class, 'index']);
     Route::get('/dashboard/order/{id}', [AdminOrderController::class, 'show']);

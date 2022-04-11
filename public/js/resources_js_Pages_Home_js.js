@@ -5578,6 +5578,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loading */ "./resources/js/components/Loading.js");
+/* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+
 
 
 
@@ -5611,11 +5613,11 @@ function AllProduct(_ref) {
       className: "text-muted text-small text-start fw-normal mt-2"
     }, el.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "text-danger text-decoration-line-through text-start text-small"
-    }, "Rp.", el.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, "Rp ", (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__["default"])(el.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "d-flex justify-content-between"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
       className: "text-dark text-start"
-    }, "Rp.", el.price - el.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, "Rp ", (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__["default"])(el.price - el.discounts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "text-success px-1 rounded-3",
       style: {
         backgroundColor: 'rgba(25, 135, 84, 0.2)'
@@ -5910,6 +5912,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+
 
 
 
@@ -5949,11 +5953,11 @@ function HotProduct(_ref) {
       className: "text-muted text-small text-start fw-normal mt-2"
     }, el.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
       className: "text-danger text-decoration-line-through text-start text-small"
-    }, "Rp.", el.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, "Rp ", (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_2__["default"])(el.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "d-flex justify-content-between"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
       className: "text-dark text-start"
-    }, "Rp.", el.price - el.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, "Rp ", (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_2__["default"])(el.price - el.discounts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "text-success px-1 rounded-3",
       style: {
         backgroundColor: 'rgba(25, 135, 84, 0.2)'
@@ -6091,6 +6095,27 @@ function NewProduct(_ref) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NewProduct);
+
+/***/ }),
+
+/***/ "./resources/js/helper/formatnumber.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helper/formatnumber.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function formatNumber(number) {
+  return new Intl.NumberFormat('IN', {
+    maximumSignificantDigits: 3
+  }).format(number);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatNumber);
 
 /***/ }),
 

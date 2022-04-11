@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 import Loading from './Loading';
+import formatNumber from '../helper/formatnumber';
 
 function AllProduct({ data, isLoading }) {
   return (
@@ -28,11 +29,11 @@ function AllProduct({ data, isLoading }) {
                     {el.name}
                   </span>
                   <span className="text-danger text-decoration-line-through text-start text-small">
-                    Rp.{el.price}
+                    Rp {formatNumber(el.price)}
                   </span>
                   <div className="d-flex justify-content-between">
                     <strong className="text-dark text-start">
-                      Rp.{el.price - el.discounts}
+                      Rp {formatNumber(el.price - el.discounts)}
                     </strong>
                     <div
                       className="text-success px-1 rounded-3"

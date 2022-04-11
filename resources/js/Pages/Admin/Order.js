@@ -2,7 +2,6 @@ import React from 'react';
 import DashboardLayout from './DashboardLayout';
 import Pagination from '../../components/Pagination';
 import { Link } from '@inertiajs/inertia-react';
-import modifyTime from '../../helper/modifytime';
 
 function Order(props) {
   const { data, links } = props.orders;
@@ -31,7 +30,7 @@ function Order(props) {
                 <td>{order.user_name}</td>
                 <td>{order.user_phone_number}</td>
                 <td>{order.status}</td>
-                <td>{modifyTime(order.created_at)}</td>
+                <td>{order.created_at}</td>
                 <td>
                   <Link
                     href={`/dashboard/order/${order.id}`}

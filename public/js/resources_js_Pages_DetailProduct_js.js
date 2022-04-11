@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _MainLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainLayout */ "./resources/js/Pages/MainLayout.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+
 
 
 
@@ -105,9 +107,9 @@ function DetailProduct(props) {
     className: "w-50"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "d-block py-1 text-dark"
-  }, price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+  }, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__["default"])(price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "d-block py-1 text-dark"
-  }, discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+  }, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_3__["default"])(discounts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "d-block py-1 text-dark"
   }, category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "d-block py-1 text-dark"
@@ -126,7 +128,7 @@ function DetailProduct(props) {
       bottom: '3.5rem'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "btn btn-sm bg-orange rounded-pill text-light text-small",
+    className: "btn bg-orange rounded-pill text-light text-small px-5",
     onClick: addToCart
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fa-solid fa-cart-plus"
@@ -222,6 +224,26 @@ function Navigation() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navigation);
+
+/***/ }),
+
+/***/ "./resources/js/helper/formatnumber.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helper/formatnumber.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function formatNumber(number) {
+  return new Intl.NumberFormat('IN', {
+    maximumSignificantDigits: 3
+  }).format(number);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatNumber);
 
 /***/ })
 
