@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import MainLayout from '../MainLayout';
 import { Inertia } from '@inertiajs/inertia';
-import { useForm } from '@inertiajs/inertia-react';
+import { useForm, Head } from '@inertiajs/inertia-react';
 
 function Chat(props) {
   const { post, data, setData, reset } = useForm({ message: '' });
@@ -27,6 +27,9 @@ function Chat(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Pesan</title>
+      </Head>
       <div className="position-fixed w-100 start-0 d-flex justify-content-center top-0">
         <div
           className="d-flex align-items-center gap-2 w-100 px-2 py-1 bg-orange"

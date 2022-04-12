@@ -3210,10 +3210,10 @@ function DashboardLayout(_ref) {
     link: "/dashboard/chat"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "nav-link text-secondary",
-    href: "/dashboard/report"
-  }, "Laporan"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NavLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Laporan",
+    link: "/dashboard/report"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
     className: "col-md-9 ms-sm-auto col-lg-10"
   }, children))));
 }
@@ -3237,6 +3237,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _helper_showtoast__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helper/showtoast */ "./resources/js/helper/showtoast.js");
 /* harmony import */ var _components_Toast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Toast */ "./resources/js/components/Toast.js");
+/* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+
 
 
 
@@ -3260,7 +3262,7 @@ function DetailOrder(props) {
     });
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Detail pesanan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "d-flex gap-2 mt-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "card col-md-6"
@@ -3300,7 +3302,7 @@ function DetailOrder(props) {
     className: "text-dark"
   }, order.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
     className: "text-dark"
-  }, "Rp.", order.total_payment))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, "Rp ", (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_5__["default"])(order.total_payment)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "btn btn-sm btn-success mt-3",
     onClick: updateStatus
   }, "Update pesanan"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3337,7 +3339,7 @@ function DetailOrder(props) {
       width: 30,
       height: 30,
       className: "rounded image-fit"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.product.price - order.product.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.quantity));
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_5__["default"])(order.product.price - order.product.discounts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.quantity));
   }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Toast__WEBPACK_IMPORTED_MODULE_4__["default"], {
     message: flash.message && flash.message
   }));
@@ -3416,6 +3418,26 @@ function Toast(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Toast);
+
+/***/ }),
+
+/***/ "./resources/js/helper/formatnumber.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helper/formatnumber.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function formatNumber(number) {
+  return new Intl.NumberFormat('IN', {
+    maximumSignificantDigits: 3
+  }).format(number);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatNumber);
 
 /***/ }),
 

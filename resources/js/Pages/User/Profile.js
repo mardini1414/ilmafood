@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useForm } from '@inertiajs/inertia-react';
+import { Link, useForm, Head } from '@inertiajs/inertia-react';
 import MainLayout from '../MainLayout';
 
 function Profile(props) {
@@ -35,6 +35,9 @@ function Profile(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>{name}</title>
+      </Head>
       <div className="pb-5" style={{ height: '100vh' }}>
         <div className="p-2">
           <div className="text-center pt-5 bg-orange rounded">

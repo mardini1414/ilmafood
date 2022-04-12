@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import MainLayout from './MainLayout';
 import axios from 'axios';
-import { Link } from '@inertiajs/inertia-react';
+import { Link, Head } from '@inertiajs/inertia-react';
 import Loading from '../components/Loading';
 
 function Search() {
@@ -32,6 +32,9 @@ function Search() {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Cari makanan kesukaanmu</title>
+      </Head>
       <div
         className="px-2"
         style={{ height: 'max-content', minHeight: '100vh' }}

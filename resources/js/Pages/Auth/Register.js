@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useForm } from '@inertiajs/inertia-react';
+import { Link, useForm, Head } from '@inertiajs/inertia-react';
 
 function Register({ flash }) {
   const { data, setData, post, processing, reset, errors } = useForm({
@@ -17,6 +17,9 @@ function Register({ flash }) {
 
   return (
     <div className="container-fluid">
+      <Head>
+        <title>Daftar</title>
+      </Head>
       <div className="row justify-content-center" style={{ height: '100vh' }}>
         <div className="bg-light" style={{ maxWidth: 414 }}>
           <div className="d-flex justify-content-between px-2">

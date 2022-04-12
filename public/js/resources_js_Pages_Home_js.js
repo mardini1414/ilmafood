@@ -5390,6 +5390,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_Auth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Auth */ "./resources/js/components/Auth.js");
 /* harmony import */ var _components_HotProduct__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/HotProduct */ "./resources/js/components/HotProduct.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -5421,6 +5422,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5510,7 +5512,7 @@ function Home(props) {
       window.removeEventListener('scroll', lodash__WEBPACK_IMPORTED_MODULE_10__.debounce);
     };
   }, [data.next_page_url]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_13__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("title", null, "Selamat datang di ilmafood")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {
     isEmptyCart: props.isEmptyCart
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Carousel__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Announcement__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_Auth__WEBPACK_IMPORTED_MODULE_11__["default"], {
     user: props.user

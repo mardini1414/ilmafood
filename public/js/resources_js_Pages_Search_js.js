@@ -2315,7 +2315,7 @@ function Search() {
     return _searchData.apply(this, arguments);
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("title", null, "Cari makanan kesukaanmu")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "px-2",
     style: {
       height: 'max-content',

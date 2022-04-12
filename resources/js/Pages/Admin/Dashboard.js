@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DashboardLayout from './DashboardLayout';
 import CardDashboard from '../../components/CardDashboard';
 import Chart from '../../components/Chart';
 import formatNumber from '../../helper/formatnumber';
+import { Head } from '@inertiajs/inertia-react';
 
 function Dashboard(props) {
   const {
@@ -15,11 +16,14 @@ function Dashboard(props) {
   } = props;
   return (
     <DashboardLayout>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <div className="col-12 p-2 d-flex gap-4">
         <CardDashboard
           background={'bg-warning'}
           title={'Transaksi'}
-          value={total_transactions}
+          value={formatNumber(total_transactions)}
         />
         <CardDashboard
           background={'bg-primary'}
@@ -29,12 +33,12 @@ function Dashboard(props) {
         <CardDashboard
           background={'bg-success'}
           title={'Produk'}
-          value={product}
+          value={formatNumber(product)}
         />
         <CardDashboard
           background={'bg-danger'}
           title={'Pengguna'}
-          value={user}
+          value={formatNumber(user)}
         />
       </div>
       <div className="row mt-3">

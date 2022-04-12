@@ -1,11 +1,12 @@
 import React from 'react';
-import { usePage, Link, useForm } from '@inertiajs/inertia-react';
+import { usePage, Link, useForm, Head } from '@inertiajs/inertia-react';
 import DashboardLayout from './DashboardLayout';
 import BtnDelProduct from '../../components/BtnDelProduct';
 import BtnEditProduct from '../../components/BtnEditProduct';
 import BtnDetProduct from '../../components/BtnDetProduct';
 import Pagination from '../../components/Pagination';
 import Toast from '../../components/Toast';
+import formatNumber from '../../helper/formatnumber';
 
 function Product(props) {
   const { flash } = usePage().props;
@@ -24,6 +25,9 @@ function Product(props) {
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Produk</title>
+      </Head>
       <div className="header d-flex pt-3 justify-content-between">
         <div className="col-5">
           <div className="input-group">
@@ -64,9 +68,9 @@ function Product(props) {
                 <tr key={product.id}>
                   <td>{index}</td>
                   <td>{product.name}</td>
-                  <td>{product.stock}</td>
-                  <td>{product.price}</td>
-                  <td>{product.discounts}</td>
+                  <td>{formatNumber(product.stock)}</td>
+                  <td>{formatNumber(product.price)}</td>
+                  <td>{formatNumber(product.discounts)}</td>
                   <td>{product.category}</td>
                   <td className="d-flex">
                     <BtnDetProduct id={product.id} />

@@ -1,7 +1,7 @@
 {
     "indentSize": 2,
-    "wrapAttributes": "force-expand-multiline",
-    "wrapLineLength": 200,
+    "wrapAttributes": "auto",
+    "wrapLineLength": 120,
     "endWithNewLine": false,
     "useTabs": false,
     "sortTailwindcssClasses": true

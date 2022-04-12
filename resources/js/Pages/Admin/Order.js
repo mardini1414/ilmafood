@@ -1,13 +1,16 @@
 import React from 'react';
 import DashboardLayout from './DashboardLayout';
 import Pagination from '../../components/Pagination';
-import { Link } from '@inertiajs/inertia-react';
+import { Link, Head } from '@inertiajs/inertia-react';
 
 function Order(props) {
   const { data, links } = props.orders;
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Pesanan</title>
+      </Head>
       <table className="table">
         <thead>
           <tr>

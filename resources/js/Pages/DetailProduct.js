@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from './MainLayout';
-import { useForm, usePage } from '@inertiajs/inertia-react';
+import { useForm, usePage, Head } from '@inertiajs/inertia-react';
 import formatNumber from '../helper/formatnumber';
 
 function DetailProduct(props) {
@@ -34,6 +34,9 @@ function DetailProduct(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>{name}</title>
+      </Head>
       <div className="p-2 w-100" style={{ height: '100vh', fontSize: '1rem' }}>
         <div>
           <img

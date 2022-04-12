@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_Order_js"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_Pages_Admin_Report_js"],{
 
 /***/ "./resources/js/Pages/Admin/DashboardLayout.js":
 /*!*****************************************************!*\
@@ -83,10 +83,10 @@ function DashboardLayout(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Admin/Order.js":
-/*!*******************************************!*\
-  !*** ./resources/js/Pages/Admin/Order.js ***!
-  \*******************************************/
+/***/ "./resources/js/Pages/Admin/Report.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/Admin/Report.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -95,49 +95,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardLayout */ "./resources/js/Pages/Admin/DashboardLayout.js");
-/* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
-function Order(props) {
-  var _props$orders = props.orders,
-      data = _props$orders.data,
-      links = _props$orders.links;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Pesanan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", {
-    className: "table"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "Id pesanan"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "Nama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "No telepon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "Tanggal/waktu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-    scope: "col"
-  }, "Detail"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, data.map(function (order, index) {
-    index += 1;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
-      key: index
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
-      scope: "row"
-    }, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.delivery_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.user_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.user_phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, order.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
-      href: "/dashboard/order/".concat(order.id),
-      className: "btn btn-sm btn-primary"
-    }, "Lihat")));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Pagination__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    links: links
-  }));
+function Report() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('2022-01'),
+      _useState2 = _slicedToArray(_useState, 2),
+      test = _useState2[0],
+      setTest = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(test.slice(5, 7));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Laporan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "col-4 py-2 d-grid gap-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    htmlFor: "month"
+  }, "Pilih bulan dan tahun"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    id: "month",
+    type: "month",
+    value: test,
+    className: "form-control",
+    onChange: function onChange(e) {
+      return setTest(e.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/dashboard/report/".concat(test.slice(0, 4), "/").concat(test.slice(5, 7)),
+    className: "btn btn-sm btn-success"
+  }, "Buat Laporan")));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Order);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Report);
 
 /***/ }),
 
@@ -170,77 +172,6 @@ function NavLink(_ref) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavLink);
-
-/***/ }),
-
-/***/ "./resources/js/components/Pagination.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Pagination.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
-
-
-var PageLink = function PageLink(_ref) {
-  var active = _ref.active,
-      label = _ref.label,
-      url = _ref.url;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "page-item ".concat(active ? 'active' : '')
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    className: "page-link",
-    href: url
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    dangerouslySetInnerHTML: {
-      __html: label
-    }
-  })));
-}; // Previous, if on first page
-// Next, if on last page
-// and dots, if exists (...)
-
-
-var PageInactive = function PageInactive(_ref2) {
-  var label = _ref2.label;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "page-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "page-link text-muted bg-light",
-    dangerouslySetInnerHTML: {
-      __html: label
-    }
-  }));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (_ref3) {
-  var _ref3$links = _ref3.links,
-      links = _ref3$links === void 0 ? [] : _ref3$links;
-  // dont render, if there's only 1 page (previous, 1, next)
-  if (links.length === 3) return null;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "pagination"
-  }, links.map(function (_ref4) {
-    var active = _ref4.active,
-        label = _ref4.label,
-        url = _ref4.url;
-    return url === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PageInactive, {
-      key: label,
-      label: label
-    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(PageLink, {
-      key: label,
-      label: label,
-      active: active,
-      url: url
-    });
-  }));
-});
 
 /***/ })
 

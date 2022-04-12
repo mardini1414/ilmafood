@@ -1,6 +1,7 @@
 import React from 'react';
 import MainLayout from '../MainLayout';
 import formatNumber from '../../helper/formatnumber';
+import { Head } from '@inertiajs/inertia-react';
 
 function Order(props) {
   const { orders } = props;
@@ -14,6 +15,9 @@ function Order(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Pesanan saya</title>
+      </Head>
       <div className="px-2 pt-2 pb-5" style={{ height: '100vh' }}>
         <div className="pb-5">
           {orders.length > 0 ? (

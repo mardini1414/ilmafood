@@ -11,6 +11,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/dashboard/product', ProductController::class);
-    Route::get('/dashboard/report', [DashboardController::class, 'report']);
+    Route::get('/dashboard/report', [ReportController::class, 'index']);
+    Route::get('/dashboard/report/{year}/{month}', [ReportController::class, 'show']);
 
     Route::get('/dashboard/order', [AdminOrderController::class, 'index']);
     Route::get('/dashboard/order/{id}', [AdminOrderController::class, 'show']);

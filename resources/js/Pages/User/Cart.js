@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../MainLayout';
-import { useForm, usePage, Link } from '@inertiajs/inertia-react';
+import { useForm, usePage, Link, Head } from '@inertiajs/inertia-react';
 
 function Cart(props) {
   const { carts, total, shippingCost, totalPayment } = props;
@@ -9,6 +9,9 @@ function Cart(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Keranjang saya</title>
+      </Head>
       <div className="p-2" style={{ height: '100vh' }}>
         <div className="rounded">
           {carts.map((cart, index) => {

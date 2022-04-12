@@ -71,10 +71,10 @@ function DashboardLayout(_ref) {
     link: "/dashboard/chat"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "nav-link text-secondary",
-    href: "/dashboard/report"
-  }, "Laporan"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NavLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Laporan",
+    link: "/dashboard/report"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
     className: "col-md-9 ms-sm-auto col-lg-10"
   }, children))));
 }

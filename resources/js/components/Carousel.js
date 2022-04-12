@@ -23,15 +23,13 @@ function Carousel() {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <div className="d-flex justify-content-evenly align-items-center bg-mygradient rounded">
-              <h6 className="text-light">Diskon sampai 70%</h6>
+              <h6 className="text-light">Dijamin murah 100%</h6>
               <img src={imgSlide1} width={100} alt="slide1" />
             </div>
           </div>
           <div className="carousel-item">
             <div className="d-flex justify-content-evenly align-items-center bg-mygradient rounded">
-              <h6 className="text-light ms-4">
-                Banyak pilihannya menu untukmu.
-              </h6>
+              <h6 className="text-light ms-4">Banyak pilihan untukmu</h6>
               <img
                 src={imgSlide2}
                 width={100}

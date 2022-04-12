@@ -41,12 +41,7 @@ function DashboardLayout({ children }) {
                   <NavLink title="Pesan" link="/dashboard/chat" />
                 </li>
                 <li className="nav-item">
-                  <a
-                    className="nav-link text-secondary"
-                    href="/dashboard/report"
-                  >
-                    Laporan
-                  </a>
+                  <NavLink title="Laporan" link="/dashboard/report" />
                 </li>
               </ul>
             </div>

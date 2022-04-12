@@ -1,8 +1,9 @@
 import React from 'react';
 import DashboardLayout from './DashboardLayout';
-import { useForm, usePage } from '@inertiajs/inertia-react';
+import { useForm, usePage, Head } from '@inertiajs/inertia-react';
 import showToast from '../../helper/showtoast';
 import Toast from '../../components/Toast';
+import formatNumber from '../../helper/formatnumber';
 
 function DetailOrder(props) {
   const { flash } = usePage().props;
@@ -19,6 +20,9 @@ function DetailOrder(props) {
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Detail pesanan</title>
+      </Head>
       <div className="d-flex gap-2 mt-3">
         <div className="card col-md-6">
           <div className="card-header bg-primary">
@@ -40,7 +44,9 @@ function DetailOrder(props) {
                 <strong className="text-dark">{order.user_phone_number}</strong>
                 <strong className="text-dark">{order.created_at}</strong>
                 <strong className="text-dark">{order.status}</strong>
-                <strong className="text-dark">Rp.{order.total_payment}</strong>
+                <strong className="text-dark">
+                  Rp {formatNumber(order.total_payment)}
+                </strong>
               </div>
             </div>
             <button
@@ -83,7 +89,11 @@ function DetailOrder(props) {
                           />
                         </td>
                         <td>{order.product.name}</td>
-                        <td>{order.product.price - order.product.discounts}</td>
+                        <td>
+                          {formatNumber(
+                            order.product.price - order.product.discounts
+                          )}
+                        </td>
                         <td>{order.quantity}</td>
                       </tr>
                     );

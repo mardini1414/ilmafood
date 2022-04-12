@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class DashboardController extends Controller
 {
@@ -40,20 +38,5 @@ class DashboardController extends Controller
         ];
 
         return Inertia::render('Admin/Dashboard', $data);
-    }
-
-    public function report()
-    {
-        $incomePerDay = [];
-
-        for ($i = 1; $i <= 31; $i++) {
-            $income = Order::whereMonth('created_at', date('m'))->whereDay('created_at', $i < 10 ? "0$i" : "$i")->sum('total_payment');
-            array_push($incomePerDay, $income);
-        }
-
-        $month = Carbon::parse(date('M'))->translatedFormat('F');
-
-        $pdf = Pdf::loadView('pdf.report', compact('incomePerDay', 'month'))->setPaper('A4');
-        return $pdf->stream('report.pdf');
     }
 }

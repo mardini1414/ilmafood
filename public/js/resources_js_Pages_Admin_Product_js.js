@@ -3210,10 +3210,10 @@ function DashboardLayout(_ref) {
     link: "/dashboard/chat"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "nav-link text-secondary",
-    href: "/dashboard/report"
-  }, "Laporan"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NavLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Laporan",
+    link: "/dashboard/report"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
     className: "col-md-9 ms-sm-auto col-lg-10"
   }, children))));
 }
@@ -3240,6 +3240,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_BtnDetProduct__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/BtnDetProduct */ "./resources/js/components/BtnDetProduct.js");
 /* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Pagination */ "./resources/js/components/Pagination.js");
 /* harmony import */ var _components_Toast__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Toast */ "./resources/js/components/Toast.js");
+/* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+
 
 
 
@@ -3267,7 +3269,7 @@ function Product(props) {
     });
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Produk")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header d-flex pt-3 justify-content-between"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "col-5"
@@ -3313,7 +3315,7 @@ function Product(props) {
     index += 1;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", {
       key: product.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.stock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.discounts), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, index), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_8__["default"])(product.stock)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_8__["default"])(product.price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_8__["default"])(product.discounts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", {
       className: "d-flex"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_BtnDetProduct__WEBPACK_IMPORTED_MODULE_5__["default"], {
       id: product.id
@@ -3576,6 +3578,26 @@ function Toast(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Toast);
+
+/***/ }),
+
+/***/ "./resources/js/helper/formatnumber.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helper/formatnumber.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function formatNumber(number) {
+  return new Intl.NumberFormat('IN', {
+    maximumSignificantDigits: 3
+  }).format(number);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (formatNumber);
 
 /***/ }),
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@inertiajs/inertia-react';
 
 function Announcement() {
   return (
@@ -7,9 +6,15 @@ function Announcement() {
       <div className="px-2 py-1 rounded mt-2 d-flex justify-content-between align-items-center bg-white">
         <span className="text-small text-muted">
           Ilmafood sekarang lagi bagi bagi hadiah loh, Buruan cek sekarang.{' '}
-          <Link className="text-orange text-decoration-none">
-            <span>Cek sekarang</span>
-          </Link>
+          <div className="text-orange text-decoration-none pointer">
+            <span
+              onClick={() =>
+                alert('Nantikan segera \nilmafood created by : Mardini')
+              }
+            >
+              Cek sekarang
+            </span>
+          </div>
         </span>
         <i
           className="fa-solid fa-box-open text-orange"

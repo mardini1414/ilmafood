@@ -10,6 +10,7 @@ import AllProduct from '../components/AllProduct';
 import { debounce } from 'lodash';
 import Auth from '../components/Auth';
 import HotProduct from '../components/HotProduct';
+import { Head } from '@inertiajs/inertia-react';
 
 function Home(props) {
   const { hot_product } = props;
@@ -46,6 +47,9 @@ function Home(props) {
 
   return (
     <MainLayout>
+      <Head>
+        <title>Selamat datang di ilmafood</title>
+      </Head>
       <Header isEmptyCart={props.isEmptyCart} />
       <Carousel />
       <Announcement />

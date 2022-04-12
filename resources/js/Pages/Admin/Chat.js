@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import DashboardLayout from './DashboardLayout';
 import { Inertia } from '@inertiajs/inertia';
-import { Link, useForm } from '@inertiajs/inertia-react';
+import { Link, useForm, usePage, Head } from '@inertiajs/inertia-react';
 
 function AdminChat(props) {
   const { users, messages, id, user_id } = props;
   const { post, data, setData, reset } = useForm({ message: '' });
   const bodyMessage = useRef();
+  const { url } = usePage();
 
   function sendMessage() {
     post(`/dashboard/chat/${id}`, {
@@ -28,6 +29,9 @@ function AdminChat(props) {
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Pesan</title>
+      </Head>
       <div className="row" style={{ height: '100vh', overflow: 'hidden' }}>
         <div
           className="col-md-4 px-0"
@@ -37,10 +41,14 @@ function AdminChat(props) {
             return (
               <Link
                 href={`/dashboard/chat/${user.id}`}
-                className="text-decoration-none"
+                className={`text-decoration-none d-block ${
+                  url === `/dashboard/chat/${user.id}`
+                    ? 'bg-success text-light'
+                    : 'bg-light text-dark'
+                }`}
                 key={index}
               >
-                <div className="p-2 bg-white rounded border-bottom">
+                <div className="p-2 border-bottom">
                   <img
                     src={
                       user.avatar !== null
@@ -52,7 +60,7 @@ function AdminChat(props) {
                     height={40}
                     className="image-fit rounded-circle"
                   />
-                  <span className="text-dark ms-2">{user.name}</span>
+                  <span className="ms-2">{user.name}</span>
                 </div>
               </Link>
             );

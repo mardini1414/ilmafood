@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import DashboardLayout from './DashboardLayout';
-import { useForm, usePage } from '@inertiajs/inertia-react';
+import { useForm, usePage, Head } from '@inertiajs/inertia-react';
 import Toast from '../../components/Toast';
 import showToast from '../../helper/showtoast';
 
@@ -40,6 +40,9 @@ function CreateProduct() {
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Tambah produk</title>
+      </Head>
       <form
         ref={createForm}
         onSubmit={submit}

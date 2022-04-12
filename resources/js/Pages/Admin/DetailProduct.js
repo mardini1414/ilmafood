@@ -1,10 +1,14 @@
 import React from 'react';
 import DashboardLayout from './DashboardLayout';
 import formatNumber from '../../helper/formatnumber';
+import { Head } from '@inertiajs/inertia-react';
 
 function DetailProduct(props) {
   return (
     <DashboardLayout>
+      <Head>
+        <title>Detail produk</title>
+      </Head>
       <div className="card mt-3">
         <div className="card-header bg-warning">
           <h3 className="my-3 text-light">Detail produk</h3>

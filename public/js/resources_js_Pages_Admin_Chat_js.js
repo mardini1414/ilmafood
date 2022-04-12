@@ -36,6 +36,9 @@ function AdminChat(props) {
 
   var bodyMessage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
 
+  var _usePage = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)(),
+      url = _usePage.url;
+
   function sendMessage() {
     post("/dashboard/chat/".concat(id), {
       onSuccess: reset(),
@@ -53,7 +56,7 @@ function AdminChat(props) {
     });
     bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
   }, [messages]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Pesan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "row",
     style: {
       height: '100vh',
@@ -68,10 +71,10 @@ function AdminChat(props) {
   }, users.map(function (user, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
       href: "/dashboard/chat/".concat(user.id),
-      className: "text-decoration-none",
+      className: "text-decoration-none d-block ".concat(url === "/dashboard/chat/".concat(user.id) ? 'bg-success text-light' : 'bg-light text-dark'),
       key: index
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "p-2 bg-white rounded border-bottom"
+      className: "p-2 border-bottom"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: user.avatar !== null ? "/storage/".concat(user.avatar) : '/images/avatar.png',
       alt: user,
@@ -79,7 +82,7 @@ function AdminChat(props) {
       height: 40,
       className: "image-fit rounded-circle"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      className: "text-dark ms-2"
+      className: "ms-2"
     }, user.name)));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     ref: bodyMessage,
@@ -214,10 +217,10 @@ function DashboardLayout(_ref) {
     link: "/dashboard/chat"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "nav-link text-secondary",
-    href: "/dashboard/report"
-  }, "Laporan"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NavLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Laporan",
+    link: "/dashboard/report"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
     className: "col-md-9 ms-sm-auto col-lg-10"
   }, children))));
 }

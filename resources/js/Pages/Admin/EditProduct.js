@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import DashboardLayout from './DashboardLayout';
-import { useForm, usePage } from '@inertiajs/inertia-react';
+import { useForm, usePage, Head } from '@inertiajs/inertia-react';
 import Toast from '../../components/Toast';
 import showToast from '../../helper/showtoast';
 
@@ -45,6 +45,9 @@ function EditProduct(props) {
 
   return (
     <DashboardLayout>
+      <Head>
+        <title>Edit produk</title>
+      </Head>
       <form
         onSubmit={submit}
         className="col-md-6 d-grid gap-2 mt-3 p-3 shadow rounded"

@@ -16,6 +16,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CardDashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/CardDashboard */ "./resources/js/components/CardDashboard.js");
 /* harmony import */ var _components_Chart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Chart */ "./resources/js/components/Chart.js");
 /* harmony import */ var _helper_formatnumber__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helper/formatnumber */ "./resources/js/helper/formatnumber.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 
 
 
@@ -29,12 +31,12 @@ function Dashboard(props) {
       user = props.user,
       income_per_month = props.income_per_month,
       transaction_per_month = props.transaction_per_month;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Dashboard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "col-12 p-2 d-flex gap-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_CardDashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     background: 'bg-warning',
     title: 'Transaksi',
-    value: total_transactions
+    value: (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_4__["default"])(total_transactions)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_CardDashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     background: 'bg-primary',
     title: 'Total Pemasukan',
@@ -42,11 +44,11 @@ function Dashboard(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_CardDashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     background: 'bg-success',
     title: 'Produk',
-    value: product
+    value: (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_4__["default"])(product)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_CardDashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {
     background: 'bg-danger',
     title: 'Pengguna',
-    value: user
+    value: (0,_helper_formatnumber__WEBPACK_IMPORTED_MODULE_4__["default"])(user)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "row mt-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -139,10 +141,10 @@ function DashboardLayout(_ref) {
     link: "/dashboard/chat"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
     className: "nav-item"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
-    className: "nav-link text-secondary",
-    href: "/dashboard/report"
-  }, "Laporan"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_NavLink__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Laporan",
+    link: "/dashboard/report"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
     className: "col-md-9 ms-sm-auto col-lg-10"
   }, children))));
 }
