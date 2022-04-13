@@ -60,6 +60,6 @@ class OrderController extends Controller
 
         Cart::where('user_id', Auth::user()->id)->delete();
 
-        return redirect('/order');
+        return redirect('/order')->with('message', 'ILF-' . time());
     }
 }

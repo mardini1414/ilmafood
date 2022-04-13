@@ -22,7 +22,8 @@ function Chat(props) {
       messages.push(e.message);
       Inertia.reload();
     });
-    window.scrollTo(0, bodyMessage.current.scrollHeight);
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
+    window.scrollTo(0, window.innerHeight);
   }, [messages]);
 
   return (
@@ -49,8 +50,7 @@ function Chat(props) {
         ref={bodyMessage}
         className="bg-light scroll-slide"
         style={{
-          height: 'max-content',
-          minHeight: '100vh',
+          height: '100vh',
           overflowY: 'scroll',
         }}
       >
@@ -104,7 +104,7 @@ function Chat(props) {
         style={{ bottom: 50 }}
       >
         <div
-          className="d-flex gap-2 justify-content-between w-100 px-2"
+          className="d-flex justify-content-between w-100 px-2"
           style={{ maxWidth: 414 }}
         >
           <input
@@ -112,7 +112,7 @@ function Chat(props) {
             placeholder="mulai mengetik"
             value={data.message}
             onChange={(e) => setData('message', e.target.value)}
-            className="form-control form-control-sm border-orange rounded-pill px-3"
+            className="form-control form-control-sm border-orange rounded-pill px-3 me-2"
           />
           <div
             onClick={sendMessage}

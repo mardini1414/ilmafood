@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../MainLayout';
 import formatNumber from '../../helper/formatnumber';
-import { Head } from '@inertiajs/inertia-react';
+import { Head, usePage } from '@inertiajs/inertia-react';
+import Modal from '../../components/Modal';
+import { Modal as MyModal } from 'bootstrap';
 
 function Order(props) {
   const { orders } = props;
+  const { flash } = usePage().props;
 
   function showDetail(index) {
     const orderItem = document.getElementById(`order-item${index}`);
@@ -12,6 +15,15 @@ function Order(props) {
     orderItem.classList.toggle('show-detail');
     orderUser.classList.toggle('show-detail');
   }
+
+  function showModal() {
+    const modal = document.getElementById('exampleModal');
+    new MyModal(modal, { focus: true }).show();
+  }
+
+  useEffect(() => {
+    flash.message && showModal();
+  }, [flash.message]);
 
   return (
     <MainLayout>
@@ -109,6 +121,7 @@ function Order(props) {
           )}
         </div>
       </div>
+      <Modal id={flash.message} />
     </MainLayout>
   );
 }

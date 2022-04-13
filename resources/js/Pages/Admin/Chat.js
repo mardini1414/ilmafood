@@ -104,7 +104,9 @@ function AdminChat(props) {
         </div>
       </div>
       <div
-        className="col-md-6 py-2 position-fixed d-flex gap-2 bottom-0"
+        className={`col-md-6 py-2 position-fixed d-flex gap-2 bottom-0 ${
+          url === '/dashboard/chat' ? 'd-none' : ''
+        }`}
         style={{ right: '2rem' }}
       >
         <input

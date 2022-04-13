@@ -9,7 +9,9 @@ function Announcement() {
           <div className="text-orange text-decoration-none pointer">
             <span
               onClick={() =>
-                alert('Nantikan segera \nilmafood created by : Mardini')
+                alert(
+                  'Aplikasi ini dibuat hanya untuk pembelajaran \nCreated by: Mardini'
+                )
               }
             >
               Cek sekarang

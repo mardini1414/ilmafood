@@ -116,7 +116,7 @@ function AdminChat(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "py-5"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "col-md-6 py-2 position-fixed d-flex gap-2 bottom-0",
+    className: "col-md-6 py-2 position-fixed d-flex gap-2 bottom-0 ".concat(url === '/dashboard/chat' ? 'd-none' : ''),
     style: {
       right: '2rem'
     }

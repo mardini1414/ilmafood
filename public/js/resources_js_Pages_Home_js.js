@@ -5646,8 +5646,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-
 
 
 function Announcement() {
@@ -5657,9 +5655,13 @@ function Announcement() {
     className: "px-2 py-1 rounded mt-2 d-flex justify-content-between align-items-center bg-white"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-small text-muted"
-  }, "Ilmafood sekarang lagi bagi bagi hadiah loh, Buruan cek sekarang.", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    className: "text-orange text-decoration-none"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Cek sekarang"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+  }, "Ilmafood sekarang lagi bagi bagi hadiah loh, Buruan cek sekarang.", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "text-orange text-decoration-none pointer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    onClick: function onClick() {
+      return alert('Aplikasi ini dibuat hanya untuk pembelajaran \nCreated by: Mardini');
+    }
+  }, "Cek sekarang"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
     className: "fa-solid fa-box-open text-orange",
     style: {
       fontSize: '1.8rem'
@@ -5753,7 +5755,7 @@ function Carousel() {
     className: "d-flex justify-content-evenly align-items-center bg-mygradient rounded"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
     className: "text-light"
-  }, "Diskon sampai 70%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, "Dijamin murah 100%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: _images_img_slide1_webp__WEBPACK_IMPORTED_MODULE_2__["default"],
     width: 100,
     alt: "slide1"
@@ -5763,7 +5765,7 @@ function Carousel() {
     className: "d-flex justify-content-evenly align-items-center bg-mygradient rounded"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
     className: "text-light ms-4"
-  }, "Banyak pilihannya menu untukmu."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, "Banyak pilihan untukmu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: _images_img_slide2_webp__WEBPACK_IMPORTED_MODULE_3__["default"],
     width: 100,
     alt: "slide2",

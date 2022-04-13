@@ -82,7 +82,8 @@ function Chat(props) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-    window.scrollTo(0, bodyMessage.current.scrollHeight);
+    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
+    window.scrollTo(0, window.innerHeight);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Pesan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 start-0 d-flex justify-content-center top-0"
@@ -103,8 +104,7 @@ function Chat(props) {
     ref: bodyMessage,
     className: "bg-light scroll-slide",
     style: {
-      height: 'max-content',
-      minHeight: '100vh',
+      height: '100vh',
       overflowY: 'scroll'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -149,7 +149,7 @@ function Chat(props) {
       bottom: 50
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "d-flex gap-2 justify-content-between w-100 px-2",
+    className: "d-flex justify-content-between w-100 px-2",
     style: {
       maxWidth: 414
     }
@@ -160,7 +160,7 @@ function Chat(props) {
     onChange: function onChange(e) {
       return setData('message', e.target.value);
     },
-    className: "form-control form-control-sm border-orange rounded-pill px-3"
+    className: "form-control form-control-sm border-orange rounded-pill px-3 me-2"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     onClick: sendMessage,
     className: "pointer bg-orange rounded-circle d-flex justify-content-center align-items-center p-0",

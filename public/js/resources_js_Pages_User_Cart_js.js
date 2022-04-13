@@ -64,6 +64,11 @@ function Cart(props) {
       post = _useForm.post;
 
   var flash = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.flash;
+
+  function sendOrder() {
+    post('/order');
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Keranjang saya")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "p-2",
     style: {
@@ -133,9 +138,7 @@ function Cart(props) {
     }
   }, "Hapus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "btn btn-sm bg-orange text-light",
-    onClick: function onClick() {
-      return post('/order');
-    }
+    onClick: sendOrder
   }, "Pesan"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "d-flex flex-column justify-content-center align-items-center",
     style: {

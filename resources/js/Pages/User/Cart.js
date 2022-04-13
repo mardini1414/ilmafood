@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../MainLayout';
 import { useForm, usePage, Link, Head } from '@inertiajs/inertia-react';
 
@@ -6,6 +6,10 @@ function Cart(props) {
   const { carts, total, shippingCost, totalPayment } = props;
   const { delete: destroy, post } = useForm();
   const { flash } = usePage().props;
+
+  function sendOrder() {
+    post('/order');
+  }
 
   return (
     <MainLayout>
@@ -85,7 +89,7 @@ function Cart(props) {
                 </button>
                 <button
                   className="btn btn-sm bg-orange text-light"
-                  onClick={() => post('/order')}
+                  onClick={sendOrder}
                 >
                   Pesan
                 </button>
