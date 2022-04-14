@@ -16,7 +16,7 @@ function Cart(props) {
       <Head>
         <title>Keranjang saya</title>
       </Head>
-      <div className="p-2" style={{ height: '100vh' }}>
+      <div className="p-2">
         <div className="rounded">
           {carts.map((cart, index) => {
             return (
@@ -64,7 +64,7 @@ function Cart(props) {
           {carts.length > 0 ? (
             <>
               <div>
-                <div className="bg-white d-flex justify-content-between p-2">
+                <div className="bg-white d-flex justify-content-between p-2 rounded-top">
                   <span className="text-dark">Harga total</span>
                   <span className="text-muted">Rp.{total}</span>
                 </div>
@@ -72,7 +72,7 @@ function Cart(props) {
                   <span className="text-dark">Ongkos Kirim</span>
                   <span className="text-muted">Rp.{shippingCost}</span>
                 </div>
-                <div className="bg-white rounded d-flex justify-content-between py-3 px-2">
+                <div className="bg-white rounded-bottom d-flex justify-content-between py-3 px-2">
                   <strong className="text-dark">total pembayaran</strong>
                   <strong className="text-orange">Rp.{totalPayment}</strong>
                 </div>

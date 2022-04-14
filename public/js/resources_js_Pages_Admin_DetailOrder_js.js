@@ -3250,12 +3250,13 @@ function DetailOrder(props) {
   var order = props.order;
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    status: order.status === 'diproses' ? 'dikirim' : 'diterima'
+    status: order.status === 'diproses' ? 'dikirim' : 'diterima',
+    _method: 'put'
   }),
-      put = _useForm.put;
+      post = _useForm.post;
 
   function updateStatus() {
-    put("/dashboard/order/".concat(order.id), {
+    post("/dashboard/order/".concat(order.id), {
       onSuccess: function onSuccess() {
         return (0,_helper_showtoast__WEBPACK_IMPORTED_MODULE_3__["default"])();
       }

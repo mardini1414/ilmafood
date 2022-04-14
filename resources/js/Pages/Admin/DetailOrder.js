@@ -8,12 +8,13 @@ import formatNumber from '../../helper/formatnumber';
 function DetailOrder(props) {
   const { flash } = usePage().props;
   const { order } = props;
-  const { put } = useForm({
+  const { post } = useForm({
     status: order.status === 'diproses' ? 'dikirim' : 'diterima',
+    _method: 'put',
   });
 
   function updateStatus() {
-    put(`/dashboard/order/${order.id}`, {
+    post(`/dashboard/order/${order.id}`, {
       onSuccess: () => showToast(),
     });
   }

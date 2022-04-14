@@ -28,7 +28,12 @@ function MainLayout(_ref) {
       maxWidth: 414
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "w-100"
+    id: "main",
+    className: "w-100",
+    style: {
+      height: 'min-content',
+      minHeight: '100vh'
+    }
   }, children)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Navigation__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
@@ -66,11 +71,11 @@ function Chat(props) {
 
   var messages = props.messages,
       user_id = props.user_id;
-  var bodyMessage = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
 
   function sendMessage() {
     post('/chat', {
       onSuccess: reset(),
+      preserveScroll: true,
       headers: {
         'X-Socket-ID': window.Echo.socketId()
       }
@@ -82,8 +87,12 @@ function Chat(props) {
       messages.push(e.message);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.reload();
     });
-    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
-    window.scrollTo(0, window.innerHeight);
+    var main = document.getElementById('main');
+    window.scroll({
+      top: main.scrollHeight,
+      behavior: 'smooth'
+    });
+    console.log(messages.length);
   }, [messages]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Pesan")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 start-0 d-flex justify-content-center top-0"
@@ -101,14 +110,7 @@ function Chat(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-light"
   }, "Admin"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    ref: bodyMessage,
-    className: "bg-light scroll-slide",
-    style: {
-      height: '100vh',
-      overflowY: 'scroll'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "py-4 w-100"
+    className: "w-100 py-4"
   }), messages.length > 0 ? messages.map(function (message, index) {
     if (message.from_id === 1) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -142,8 +144,8 @@ function Chat(props) {
       fontSize: '8rem'
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "py-5 w-100 bg-light"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "w-100 py-5"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "position-fixed w-100 py-2 start-0 d-flex justify-content-center",
     style: {
       bottom: 50

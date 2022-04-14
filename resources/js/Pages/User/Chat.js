@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../MainLayout';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm, Head } from '@inertiajs/inertia-react';
@@ -6,11 +6,11 @@ import { useForm, Head } from '@inertiajs/inertia-react';
 function Chat(props) {
   const { post, data, setData, reset } = useForm({ message: '' });
   const { messages, user_id } = props;
-  const bodyMessage = useRef();
 
   function sendMessage() {
     post('/chat', {
       onSuccess: reset(),
+      preserveScroll: true,
       headers: {
         'X-Socket-ID': window.Echo.socketId(),
       },
@@ -22,8 +22,8 @@ function Chat(props) {
       messages.push(e.message);
       Inertia.reload();
     });
-    bodyMessage.current.scrollTo(0, bodyMessage.current.scrollHeight);
-    window.scrollTo(0, window.innerHeight);
+    const main = document.getElementById('main');
+    window.scroll({ top: main.scrollHeight, behavior: 'smooth' });
   }, [messages]);
 
   return (
@@ -46,59 +46,50 @@ function Chat(props) {
           <span className="text-light">Admin</span>
         </div>
       </div>
-      <div
-        ref={bodyMessage}
-        className="bg-light scroll-slide"
-        style={{
-          height: '100vh',
-          overflowY: 'scroll',
-        }}
-      >
-        <div className="py-4 w-100"></div>
-        {messages.length > 0 ? (
-          messages.map((message, index) => {
-            if (message.from_id === 1) {
-              return (
-                <div className="w-100 py-1 px-2 d-flex" key={index}>
-                  <div
-                    className="p-2 bg-secondary text-white rounded"
-                    style={{
-                      maxWidth: 150,
-                    }}
-                  >
-                    {message.message}
-                  </div>
-                </div>
-              );
-            } else {
-              return (
+      <div className="w-100 py-4"></div>
+      {messages.length > 0 ? (
+        messages.map((message, index) => {
+          if (message.from_id === 1) {
+            return (
+              <div className="w-100 py-1 px-2 d-flex" key={index}>
                 <div
-                  className="w-100 py-1 px-2 d-flex justify-content-end"
-                  key={index}
+                  className="p-2 bg-secondary text-white rounded"
+                  style={{
+                    maxWidth: 150,
+                  }}
                 >
-                  <div
-                    className="p-2 bg-primary text-light rounded"
-                    style={{ maxWidth: 150 }}
-                  >
-                    {message.message}
-                  </div>
+                  {message.message}
                 </div>
-              );
-            }
-          })
-        ) : (
-          <div
-            className="d-flex justify-content-center align-items-center"
-            style={{ height: '80vh' }}
-          >
-            <i
-              className="fa-solid fa-message text-muted"
-              style={{ fontSize: '8rem' }}
-            ></i>
-          </div>
-        )}
-        <div className="py-5 w-100 bg-light"></div>
-      </div>
+              </div>
+            );
+          } else {
+            return (
+              <div
+                className="w-100 py-1 px-2 d-flex justify-content-end"
+                key={index}
+              >
+                <div
+                  className="p-2 bg-primary text-light rounded"
+                  style={{ maxWidth: 150 }}
+                >
+                  {message.message}
+                </div>
+              </div>
+            );
+          }
+        })
+      ) : (
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ height: '80vh' }}
+        >
+          <i
+            className="fa-solid fa-message text-muted"
+            style={{ fontSize: '8rem' }}
+          ></i>
+        </div>
+      )}
+      <div className="w-100 py-5"></div>
       <div
         className="position-fixed w-100 py-2 start-0 d-flex justify-content-center"
         style={{ bottom: 50 }}

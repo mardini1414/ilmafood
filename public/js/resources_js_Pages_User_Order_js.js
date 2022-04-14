@@ -3167,7 +3167,12 @@ function MainLayout(_ref) {
       maxWidth: 414
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "w-100"
+    id: "main",
+    className: "w-100",
+    style: {
+      height: 'min-content',
+      minHeight: '100vh'
+    }
   }, children)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Navigation__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
@@ -3220,10 +3225,7 @@ function Order(props) {
     flash.message && showModal();
   }, [flash.message]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Pesanan saya")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "px-2 pt-2 pb-5",
-    style: {
-      height: '100vh'
-    }
+    className: "px-2 pt-2 pb-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pb-5"
   }, orders.length > 0 ? orders.map(function (order, index) {

@@ -10,7 +10,13 @@ function MainLayout({ children }) {
             className="col-sm-4 bg-light px-0 w-100"
             style={{ maxWidth: 414 }}
           >
-            <div className="w-100">{children}</div>
+            <div
+              id="main"
+              className="w-100"
+              style={{ height: 'min-content', minHeight: '100vh' }}
+            >
+              {children}
+            </div>
           </div>
         </div>
       </div>

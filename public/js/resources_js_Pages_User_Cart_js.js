@@ -28,7 +28,12 @@ function MainLayout(_ref) {
       maxWidth: 414
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "w-100"
+    id: "main",
+    className: "w-100",
+    style: {
+      height: 'min-content',
+      minHeight: '100vh'
+    }
   }, children)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Navigation__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
@@ -70,10 +75,7 @@ function Cart(props) {
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MainLayout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, "Keranjang saya")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "p-2",
-    style: {
-      height: '100vh'
-    }
+    className: "p-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "rounded"
   }, carts.map(function (cart, index) {
@@ -109,7 +111,7 @@ function Cart(props) {
     href: "/profile",
     className: "text-warning"
   }, "disini")), carts.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "bg-white d-flex justify-content-between p-2"
+    className: "bg-white d-flex justify-content-between p-2 rounded-top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-dark"
   }, "Harga total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
@@ -121,7 +123,7 @@ function Cart(props) {
   }, "Ongkos Kirim"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "text-muted"
   }, "Rp.", shippingCost)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "bg-white rounded d-flex justify-content-between py-3 px-2"
+    className: "bg-white rounded-bottom d-flex justify-content-between py-3 px-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {
     className: "text-dark"
   }, "total pembayaran"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", {

@@ -28,7 +28,12 @@ function MainLayout(_ref) {
       maxWidth: 414
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "w-100"
+    id: "main",
+    className: "w-100",
+    style: {
+      height: 'min-content',
+      minHeight: '100vh'
+    }
   }, children)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Navigation__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
